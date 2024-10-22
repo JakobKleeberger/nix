@@ -7,5 +7,6 @@
   imports = [
     ./nvim
     ./fish
+    ./lf
   ];
 }

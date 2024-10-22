@@ -25,7 +25,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "nixvim";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
