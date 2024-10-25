@@ -2,9 +2,13 @@
   globals.mapleader = " ";
 
   keymaps = [
+    # {
+    #   key = "<leader>b";
+    #   action = "<cmd>:Ex<CR>";
+    # }
     {
       key = "<leader>b";
-      action = "<cmd>:Ex<CR>";
+      action = "<C-O>";
     }
   ];
 

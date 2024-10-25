@@ -124,6 +124,7 @@
     unzip
     git
     age
+    neofetch
     wget
   ];
 
