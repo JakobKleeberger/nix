@@ -1,0 +1,3 @@
+[submodule "direnvs"]
+	path = direnvs
+	url = https://github.com/JakobKleeberger/direnvs.git
