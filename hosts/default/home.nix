@@ -19,6 +19,10 @@
     ripgrep
     # Microsoft Teams
     teams-for-linux
+    # Doom
+    doomrunner
+    # Dia
+    dia
   ];
 
   home.file = {
