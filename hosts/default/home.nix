@@ -15,14 +15,19 @@
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     ripgrep
     # Microsoft Teams
     teams-for-linux
-    # Doom
-    doomrunner
     # Dia
     dia
+    # Spotify
+    spotify
+    downonspot
+    # Power Manager
+    powertop
   ];
 
   home.file = {
@@ -31,6 +36,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  programs.bash.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

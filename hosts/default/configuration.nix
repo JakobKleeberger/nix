@@ -128,6 +128,8 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  documentation.dev.enable = true;
+
   home-manager.backupFileExtension = "backup";
 
   home-manager = {
@@ -155,6 +157,10 @@
     poetry
     # Audio
     pavucontrol
+    #  Man Pages
+    man-pages
+    man-pages-posix
+
     kdePackages.partitionmanager
     unzip
     git

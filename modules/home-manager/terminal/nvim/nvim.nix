@@ -41,6 +41,8 @@
           lua-ls.enable = true;
           nil-ls.enable = true;
           pyright.enable = true;
+          cmake.enable = true;
+          clangd.enable = true;
         };
       };
 
@@ -63,11 +65,15 @@
             lua = ["stylua"];
             nix = ["alejandra" "nixpkgs_fmt"];
             python = ["black" "isort"];
+            c = ["clang-format"];
           };
 
           formatters = {
             alejandra = {
               command = "${lib.getExe pkgs.alejandra}";
+            };
+            nixpkgs_fmt = {
+              command = "${lib.getExe pkgs.nixpkgs-fmt}";
             };
             stylua = {
               command = "${lib.getExe pkgs.stylua}";
@@ -77,6 +83,9 @@
             };
             isort = {
               command = "${lib.getExe pkgs.isort}";
+            };
+            clang-format = {
+              command = "${lib.getExe pkgs.clang}";
             };
           };
 
