@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   stylix.enable = true;
 
   stylix.image = ./wallpapers/starry-sky-purple-sky-astronomical-stars-5k-3840x2160-1022.jpg;
@@ -6,7 +6,9 @@
 
   stylix.polarity = "dark";
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/pinky.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/vice.yaml";
 
   stylix.homeManagerIntegration.autoImport = true;
@@ -16,17 +18,17 @@
 
   stylix.fonts = {
     serif = {
-      package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
       name = "Noto";
     };
 
     sansSerif = {
-      package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
       name = "Noto";
     };
 
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
       name = "Noto";
     };
 

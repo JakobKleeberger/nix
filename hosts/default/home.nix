@@ -25,7 +25,6 @@
     dia
     # Spotify
     spotify
-    downonspot
     # Power Manager
     powertop
   ];
