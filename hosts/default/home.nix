@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
+{ config
+, pkgs
+, inputs
+, ...
 }: {
   imports = [
     # ../../modules/home-manager/terminal
@@ -27,10 +26,11 @@
     spotify
     # Power Manager
     powertop
+    # Drawio
+    drawio
   ];
 
-  home.file = {
-  };
+  home.file = { };
 
   home.sessionVariables = {
     EDITOR = "nvim";
