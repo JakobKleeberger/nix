@@ -1,0 +1,8 @@
+keys:
+  - &jakob age10e7ptkym5cy8pr0vd24gdm3wnh8ln99lzqw2fe50kf46ghtjd5yq7jd44p
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *jakob
+  

@@ -27,5 +27,17 @@
         # inputs.sops-nix.nixosModules.sops
       ];
     };
+<<<<<<< HEAD
+=======
+    nixosConfigurations.work = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/work/configuration.nix
+        inputs.home-manager.nixosModules.default
+        inputs.stylix.nixosModules.stylix
+        # inputs.sops-nix.nixosModules.sops
+      ];
+    };
+>>>>>>> e4747cf (setup work environment\nidea)
   };
 }
