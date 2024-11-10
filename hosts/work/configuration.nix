@@ -15,13 +15,18 @@
     # ../../modules/home-manager/terminal
     ../../modules/nixos/util/stylix/stylix-nixos.nix
     ../../modules/nixos/util/keyd
+    # ../../modules/home-manager/work
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "jakob-nix-laptop"; # Define your hostname.
+  networking.hostName = "swt-kleeberger-lx"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -74,7 +79,7 @@
       after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
@@ -132,14 +137,6 @@
   # Documentation
   documentation.dev.enable = true;
 
-  # Steam
-  programs.steam = {
-    enable = true;
-
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
   home-manager.backupFileExtension = "backup";
 
   home-manager = {
@@ -169,15 +166,17 @@
     #  Man Pages
     man-pages
     man-pages-posix
+    # Intellij
+    jetbrains.idea-ultimate
 
+    maven
     kdePackages.partitionmanager
     unzip
     git
-    gitui
     age
     neofetch
     wget
-    kdePackages.polkit-kde-agent-1
+    polkit_gnome
   ];
 
   # Activate Nix Flakes and nix-command
@@ -197,7 +196,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5555 ];
+  # networking.firewall.allowedTCPPorts = [ 5555 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
