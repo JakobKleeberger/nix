@@ -173,6 +173,7 @@
     kdePackages.partitionmanager
     unzip
     git
+    gitui
     age
     neofetch
     wget
