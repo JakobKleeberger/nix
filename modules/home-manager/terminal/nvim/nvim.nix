@@ -1,8 +1,7 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ inputs
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -43,6 +42,11 @@
           pyright.enable = true;
           cmake.enable = true;
           clangd.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
         };
       };
 
@@ -51,9 +55,9 @@
 
         autoEnableSources = true;
         settings.sources = [
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
         ];
       };
 
@@ -62,10 +66,11 @@
 
         settings = {
           formatters_by_ft = {
-            lua = ["stylua"];
-            nix = ["alejandra" "nixpkgs_fmt"];
-            python = ["black" "isort"];
-            c = ["clang-format"];
+            lua = [ "stylua" ];
+            nix = [ "alejandra" "nixpkgs_fmt" ];
+            python = [ "black" "isort" ];
+            c = [ "clang-format" ];
+            rust = [ "rustfmt" ];
           };
 
           formatters = {
@@ -86,6 +91,9 @@
             };
             clang-format = {
               command = "${lib.getExe pkgs.clang}";
+            };
+            rustfmt = {
+              command = "${lib.getExe pkgs.rustfmt}";
             };
           };
 

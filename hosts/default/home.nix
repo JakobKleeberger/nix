@@ -30,7 +30,10 @@
     drawio
   ];
 
-  home.file = { };
+  home.file = {
+    ".config/hypr".source = ../../dotfiles/hypr;
+    ".config/waybar".source = ../../dotfiles/waybar;
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
