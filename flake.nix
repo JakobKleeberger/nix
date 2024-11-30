@@ -36,5 +36,14 @@
           # inputs.sops-nix.nixosModules.sops
         ];
       };
+      nixosConfigurations.homelab = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/homelab/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+          # inputs.sops-nix.nixosModules.sops
+        ];
+      };
     };
 }
