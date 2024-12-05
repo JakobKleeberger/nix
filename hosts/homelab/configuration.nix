@@ -28,7 +28,7 @@
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "homelab"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -82,8 +82,12 @@
     =======
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
-    >>>>>>> 18c7737 (Revert "added tailscale to homelab")
-    };
+    <<<<<<< HEAD
+      >>>>>>> 18c7737 (Revert "added tailscale to homelab")
+      };
+      ====== =
+      };
+    >>>>>>> c8af4c1 (Reapply "added tailscale to homelab")
 
     # Enable automatic login for the user.
     services.getty.autologinUser = "homelab";
@@ -91,6 +95,16 @@
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
+    <<<<<<< HEAD
+      # List packages installed in system profile. To search, run:
+      # $ nix search wget
+      environment.systemPackages = with pkgs; [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+      neovim
+      git
+    ];
+    =======
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
@@ -98,7 +112,9 @@
       #  wget
       neovim
       git
+      tailscale
     ];
+    >>>>>>> c8af4c1 (Reapply "added tailscale to homelab")
 
     # Activate Nix Flakes and nix-command
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -111,13 +127,14 @@
     #   enableSSHSupport = true;
     # };
 
-    # List services that you want to enable:
-
-    # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
-
-    # Open ports in the firewall.
     <<<<<<< HEAD
+      # List services that you want to enable:
+
+      # Enable the OpenSSH daemon.
+      # services.openssh.enable = true;
+
+      # Open ports in the firewall.
+      <<<<<<< HEAD
       networking.firewall.allowedTCPPorts = [
       # SSH
       22
@@ -150,3 +167,28 @@
     system.stateVersion = "24.05"; # Did you read the comment?
 
   }
+  == =====
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+  };
+
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 41641 ];
+
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.05"; # Did you read the comment?
+}
+> > > >>>> c8af4c1 (Reapply "added tailscale to homelab")
