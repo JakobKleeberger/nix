@@ -4,7 +4,7 @@
 , ...
 }: {
   imports = [
-    # ../../modules/nixos/util/stylix/stylix-home.nix
+    ../../modules/nixos/util/stylix/stylix-home.nix
     ../../modules/home-manager/terminal
   ];
 
