@@ -17,6 +17,7 @@
     ripgrep
     # Power Manager
     powertop
+    compose2nix
   ];
 
   home.file = { };

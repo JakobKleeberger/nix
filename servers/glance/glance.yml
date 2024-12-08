@@ -1,0 +1,82 @@
+pages:
+  - name: Home
+    columns:
+      - size: small
+        widgets:
+          - type: calendar
+
+          - type: rss
+            limit: 10
+            collapse-after: 3
+            cache: 3h
+            feeds:
+              - url: https://ciechanow.ski/atom.xml
+              - url: https://www.joshwcomeau.com/rss.xml
+                title: Josh Comeau
+              - url: https://samwho.dev/rss.xml
+              - url: https://awesomekling.github.io/feed.xml
+              - url: https://ishadeed.com/feed.xml
+                title: Ahmad Shadeed
+
+          # - type: twitch-channels
+          #   channels:
+          #     - theprimeagen
+          #     - cohhcarnage
+          #     - christitustech
+          #     - blurbs
+          #     - asmongold
+          #     - jembawls
+
+      - size: full
+        widgets:
+          - type: search
+            search-engine: https://search.brave.com/search?q={QUERY}
+            autofocus: true
+            bangs:
+              - title: "Youtube"
+                shortcut: "youtube"
+                url: "https://www.youtube.com/results?search_query={QUERY}"
+
+          - type: monitor
+            cache: 1m
+            title: Services
+            sites:
+              - title: Jellyfin
+                url: https://yourdomain.com/
+                icon: si:jellyfin
+              - title: Gitea
+                url: https://yourdomain.com/
+                icon: si:gitea
+              - title: Immich
+                url: https://yourdomain.com/
+                icon: si:immich
+              - title: AdGuard Home
+                url: https://yourdomain.com/
+                icon: si:adguard
+              - title: Vaultwarden
+                url: https://yourdomain.com/
+                icon: si:vaultwarden
+          - type: hacker-news
+
+          # - type: reddit
+          #   subreddit: selfhosted
+
+      - size: small
+        widgets:
+          - type: weather
+            location: Bonn, Germany
+
+          - type: markets
+            markets:
+              - symbol: BTC-EUR
+                name: Bitcoin
+              - symbol: ADA-EUR
+                name: Cardano
+
+          - type: releases
+            show-source-icon: true
+            repositories:
+              - go-gitea/gitea
+              - jellyfin/jellyfin
+              - glanceapp/glance
+              - JakobKleeberger/nix

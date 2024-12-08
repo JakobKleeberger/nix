@@ -11,6 +11,9 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/util/keyd
+    ../../modules/nixos/hosting/jellyfin.nix
+
+    ../../servers/glance/docker-compose.nix
   ];
 
   # Bootloader.
@@ -66,7 +69,7 @@
   users.users.homelab = {
     isNormalUser = true;
     description = "homelab";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ ];
   };
 
@@ -85,6 +88,9 @@
     git
     tailscale
   ];
+
+  # Activate Nix Flakes and nix-command
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -105,8 +111,8 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.allowedTCPPorts = [ 22 8080 80 ];
+  networking.firewall.allowedUDPPorts = [ 41641 8080 80 ];
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
