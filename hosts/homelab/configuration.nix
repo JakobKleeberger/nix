@@ -12,6 +12,7 @@
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/util/keyd
     ../../modules/nixos/hosting/jellyfin.nix
+    ../../modules/nixos/hosting/paperless.nix
 
     ../../servers/glance/docker-compose.nix
   ];
