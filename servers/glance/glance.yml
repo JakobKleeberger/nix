@@ -42,7 +42,7 @@ pages:
             title: Services
             sites:
               - title: Jellyfin
-                url: https://yourdomain.com/
+                url: http://homelab:8096
                 icon: si:jellyfin
               - title: Gitea
                 url: https://yourdomain.com/

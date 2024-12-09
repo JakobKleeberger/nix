@@ -15,6 +15,7 @@
     ../../modules/nixos/hosting/paperless.nix
 
     ../../servers/glance/docker-compose.nix
+    ../../servers/actual-budget/docker-compose.nix
   ];
 
   # Bootloader.
@@ -112,7 +113,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 8080 80 ];
+  networking.firewall.allowedTCPPorts = [ 22 8080 80 8082 ];
   networking.firewall.allowedUDPPorts = [ 41641 8080 80 ];
 
   # Or disable the firewall altogether.

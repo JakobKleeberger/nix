@@ -4,5 +4,7 @@
   services.paperless = {
     enable = true;
     passwordFile = "/etc/paperless-admin-pass";
+    address = "localhost";
+    port = 8082;
   };
 }
