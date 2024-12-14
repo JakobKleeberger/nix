@@ -17,6 +17,7 @@
 
     ../../servers/glance/docker-compose.nix
     ../../servers/actual-budget/docker-compose.nix
+    ../../servers/viewtube/docker-compose.nix
   ];
 
   # Bootloader.
