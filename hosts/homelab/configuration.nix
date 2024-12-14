@@ -10,6 +10,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+
+    ../../modules/nixos/util/bottom.nix
+
     ../../modules/nixos/util/keyd
     ../../modules/nixos/hosting/jellyfin.nix
     ../../modules/nixos/hosting/paperless.nix
@@ -115,8 +118,23 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 8080 80 8082 5006 ];
-  networking.firewall.allowedUDPPorts = [ 41641 8080 80 ];
+  networking.firewall.allowedTCPPorts = [
+    # SSH
+    22
+    # Website Landing Page
+    8080
+    80
+    # Actual Budget?
+    8082
+    # Keine Ahnung
+    5006
+    # Viewtube
+    8066
+  ];
+  networking.firewall.allowedUDPPorts = [
+    # Tailscale
+    41641
+  ];
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

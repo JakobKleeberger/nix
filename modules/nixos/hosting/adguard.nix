@@ -6,16 +6,15 @@
         # You can select any ip and port, just make sure to open firewalls where needed
         address = "127.0.0.1:3003";
       };
-      # dns = {
-      #   upstream_dns = [
-      #     # Example config with quad9
-      #     "9.9.9.9#dns.quad9.net"
-      #     "149.112.112.112#dns.quad9.net"
-      #     # Uncomment the following to use a local DNS service (e.g. Unbound)
-      #     # Additionally replace the address & port as needed
-      #     # "127.0.0.1:5335"
-      #   ];
-      # };
+      dns = {
+        upstream_dns = [
+          # Example config with quad9
+          "1.1.1.1"
+          # Uncomment the following to use a local DNS service (e.g. Unbound)
+          # Additionally replace the address & port as needed
+          # "127.0.0.1:5335"
+        ];
+      };
       filtering = {
         protection_enabled = true;
         filtering_enabled = true;
