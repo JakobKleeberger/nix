@@ -1,7 +1,8 @@
 # Auto-generated using compose2nix v0.2.3.
-{ pkgs, lib, ... }:
-
-{
+{ pkgs
+, lib
+, ...
+}: {
   # Runtime
   virtualisation.docker = {
     enable = true;
@@ -18,7 +19,7 @@
       "/home/homelab/.nix/servers/glance/glance.yml:/app/glance.yml:rw"
     ];
     ports = [
-      "8081:8080/tcp"
+      "8080:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

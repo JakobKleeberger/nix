@@ -47,11 +47,11 @@ pages:
               - title: Radarr
                 url: http://homelab:7878
                 icon: si:radarr
-              - title: Immich
-                url: https://yourdomain.com/
-                icon: si:immich
+              - title: ActualBudget
+                url: http://homelab:5006
+                icon: si:actualbudget
               - title: AdGuard Home
-                url: http://homelab:3003
+                url: http://homelab:3000
                 icon: si:adguard
               - title: Vaultwarden
                 url: https://yourdomain.com/

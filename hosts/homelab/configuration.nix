@@ -14,7 +14,7 @@
     ../../modules/nixos/util/bottom.nix
 
     ../../modules/nixos/util/keyd
-    ../../modules/nixos/hosting/jellyfin.nix
+    # ../../modules/nixos/hosting/jellyfin.nix
     ../../modules/nixos/hosting/paperless.nix
     # ../../modules/nixos/hosting/adguard.nix
 
@@ -124,7 +124,7 @@
     # Website Landing Page
     8080
     80
-    # Actual Budget?
+    # Paperless
     8082
     # Keine Ahnung
     5006
