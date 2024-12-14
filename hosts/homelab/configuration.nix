@@ -13,6 +13,7 @@
     ../../modules/nixos/util/keyd
     ../../modules/nixos/hosting/jellyfin.nix
     ../../modules/nixos/hosting/paperless.nix
+    # ../../modules/nixos/hosting/adguard.nix
 
     ../../servers/glance/docker-compose.nix
     ../../servers/actual-budget/docker-compose.nix

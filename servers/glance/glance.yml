@@ -44,14 +44,14 @@ pages:
               - title: Jellyfin
                 url: http://homelab:8096
                 icon: si:jellyfin
-              - title: Gitea
-                url: https://yourdomain.com/
-                icon: si:gitea
+              - title: Radarr
+                url: http://homelab:7878
+                icon: si:radarr
               - title: Immich
                 url: https://yourdomain.com/
                 icon: si:immich
               - title: AdGuard Home
-                url: https://yourdomain.com/
+                url: http://homelab:3003
                 icon: si:adguard
               - title: Vaultwarden
                 url: https://yourdomain.com/
