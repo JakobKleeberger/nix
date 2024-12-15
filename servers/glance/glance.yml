@@ -53,9 +53,9 @@ pages:
               - title: AdGuard Home
                 url: http://homelab:3000
                 icon: si:adguard
-              - title: Vaultwarden
-                url: https://yourdomain.com/
-                icon: si:vaultwarden
+              - title: Paperless
+                url: http://homelab:8010
+                icon: si:paperless-ngx
           - type: hacker-news
 
           # - type: reddit

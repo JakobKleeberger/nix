@@ -15,11 +15,11 @@
 
     ../../modules/nixos/util/keyd
     # ../../modules/nixos/hosting/jellyfin.nix
-    ../../modules/nixos/hosting/paperless.nix
     # ../../modules/nixos/hosting/adguard.nix
 
     ../../servers/glance/docker-compose.nix
     ../../servers/actual-budget/docker-compose.nix
+    ../../servers/paperless/docker-compose.nix
     # ../../servers/viewtube/docker-compose.nix
   ];
 
@@ -124,8 +124,6 @@
     # Website Landing Page
     8080
     80
-    # Paperless
-    8082
     # Keine Ahnung
     5006
     # Viewtube
