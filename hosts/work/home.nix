@@ -20,14 +20,12 @@
     ripgrep
     # Microsoft Teams
     teams-for-linux
-    # Dia
-    dia
     # Spotify
     spotify
-    # Power Manager
-    powertop
-    # Drawio
-    drawio
+    # Ressource Monitor
+    bottom
+    # Keepass
+    keepassxc
   ];
 
   home.file = { };
