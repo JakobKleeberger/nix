@@ -28,6 +28,8 @@
     powertop
     # Drawio
     drawio
+    # Libreoffice
+    libreoffice
   ];
 
   home.file = {

@@ -170,6 +170,8 @@
     man-pages
     man-pages-posix
 
+    gparted
+
     polkit_gnome
     unzip
     git
@@ -178,6 +180,9 @@
     neofetch
     wget
     kdePackages.polkit-kde-agent-1
+    tailscale
+    ausweisapp
+    tor-browser-bundle-bin
   ];
 
   # Activate Nix Flakes and nix-command
@@ -196,9 +201,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.tailscale.enable = true;
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 5555 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 41641 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
