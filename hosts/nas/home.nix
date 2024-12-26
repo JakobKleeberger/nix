@@ -8,8 +8,8 @@
     ../../modules/home-manager/terminal
   ];
 
-  home.username = "homelab";
-  home.homeDirectory = "/home/homelab";
+  home.username = "nas";
+  home.homeDirectory = "/home/nas";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
