@@ -16,6 +16,8 @@
     ../../modules/nixos/util/stylix/stylix-nixos.nix
     ../../modules/nixos/util/keyd
     # ../../modules/home-manager/work
+
+    ../../modules/docker/postgres/docker-compose.nix
   ];
 
   # Bootloader.
@@ -134,6 +136,17 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk17;
+    # package = pkgs.jdk17;
+    # packages = with pkgs; [
+    #   openjdk17
+    #   openjdk11
+    # ];
+    # version = 17;
+  };
+
   # Documentation
   documentation.dev.enable = true;
 
@@ -156,7 +169,9 @@
     # Hyprland dependencies
     waybar
     hyprpaper
+    hyprlock
     wofi
+    wayvnc
     # Bluetooth Manager
     # Python3
     python312Full
@@ -169,15 +184,90 @@
     # Intellij
     jetbrains.idea-ultimate
 
+    # Java
+    # openjdk17
     maven
     kdePackages.partitionmanager
     unzip
+
+    # Git
     git
+    git-lfs
     age
     neofetch
     wget
     polkit_gnome
+
+    # Create an FHS environment using the command `fhs`, enabling the execution of non-NixOS packages in NixOS!
+    (
+      let
+        base = pkgs.appimageTools.defaultFhsEnvArgs;
+      in
+      pkgs.buildFHSUserEnv (base
+        // {
+        name = "fhs";
+        targetPkgs = pkgs:
+          # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
+          # lacking many basic packages needed by most software.
+          # Therefore, we need to add them manually.
+          #
+          # pkgs.appimageTools provides basic packages required by most software.
+          (base.targetPkgs pkgs)
+            ++ (
+            with pkgs; [
+              pkg-config
+              ncurses
+              # Feel free to add more packages here if needed.
+            ]
+          );
+        profile = "export FHS=1";
+        runScript = "bash";
+        extraOutputsToInstall = [ "dev" ];
+      })
+    )
   ];
+
+  environment.sessionVariables = rec {
+    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
+
+    SEDNA_VERSION = "/home/jakob/dev/swt.products.sedna";
+    WILDFLY_VERSION = "32.0.1";
+
+    RC_CUSTOMER_NAME = "pgsednatrunk";
+    RC_XA_DATASOURCE = "java:/pgsednatrunk";
+    RC_CSB_PORT = 8080;
+
+    RC_CSB_HOST = "swt-kleeberger-lx";
+    RC_NAMESPACE = "$RC_CUSTOMER_NAME";
+    RC_DATABASE = "PostgreSQL";
+
+    #RC_STORAGE_SERVICE_NAME=storage
+    #RC_FS_STORAGE_ADAPTER_NAME=fsStorageAdapter
+    #RC_FS_STORAGE_ADAPTER_PATH=D:\SEDNA-FileSystemStorage-common
+    #RC_DATASTORE_NAME=datastore
+    #RC_REPOSITORY_NAME=DEFA2DB
+
+    RC_AGENT_SERVICE_NAME = "AgentServer";
+    RC_AGENT_SERVICE_PORT = 8070;
+
+    RC_CSB_SINCE_4_2 = "TRUE";
+
+    # Not officially in the specification
+    # XDG_BIN_HOME    = "$HOME/.local/bin";
+    # PATH = [
+    #   "${XDG_BIN_HOME}"
+    # ];
+  };
+
+  environment.shellAliases = {
+    csbcmd = "$SEDNA_VERSION/DOXiS4-CSBcmd/assemble/target/dist/csbcmd";
+    administration-server = "$SEDNA_VERSION/SEDNA-Administration/server/assemble/target/dist/DOXiS4CSBAdminServer";
+    administration-client = "$SEDNA_VERSION/SEDNA-Administration/client/assemble/target/dist/DOXiS4CSBAdminClient";
+    agentserver = "$SEDNA_VERSION/SEDNA-AgentServer/agentserver-assembly/target/dist/DOXiS4CSBAgentServer";
+    ft = "$SEDNA_VERSION/SEDNA-FT/assemble/target/dist/DOXiS4-FT";
+    fips = "$SEDNA_VERSION/SEDNA-Fips/assembly/target/dist/server/DOXiS4-Fips";
+    wildfly = "cd ~/dev/runtime/wildfly/wildfly-$WILDFLY_VERSION/bin && ./standalone.sh";
+  };
 
   # Activate Nix Flakes and nix-command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -196,8 +286,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 5555 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 5900 ];
+  networking.firewall.allowedUDPPorts = [ 5900 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
