@@ -18,6 +18,7 @@
     # ../../modules/home-manager/work
 
     ../../modules/docker/postgres/docker-compose.nix
+    ../../modules/docker/orcldb/docker-compose.nix
   ];
 
   # Bootloader.
@@ -190,9 +191,11 @@
     kdePackages.partitionmanager
     unzip
 
-    # Git
+    # Versionierung
     git
     git-lfs
+    subversion
+
     age
     neofetch
     wget
