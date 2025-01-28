@@ -41,6 +41,13 @@
     EDITOR = "nvim";
   };
 
+  programs.git = {
+    enable = true;
+    userName = "JakobKleeberger";
+    userEmail = "kleeberger.jakob@aol.com";
+    lfs.enable = true;
+  };
+
   programs.bash.enable = true;
 
   # Let Home Manager install and manage itself.
