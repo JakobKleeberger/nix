@@ -86,7 +86,6 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -158,6 +157,7 @@
   environment.systemPackages = with pkgs; [
     # Hyprland dependencies
     waybar
+    hyprlock
     hyprpaper
     wofi
     # Bluetooth Manager
@@ -170,18 +170,29 @@
     man-pages
     man-pages-posix
 
-    gparted
-
-    polkit_gnome
-    unzip
+    # Versioning
     git
     gitui
+
+    # Tools
+    unzip
     age
     neofetch
     wget
+    dua
+    emacs29-pgtk
+
+    # Polkit
+    polkit_gnome
     kdePackages.polkit-kde-agent-1
+
+    # Tailscale
     tailscale
+
+    # Ausweisapp
     ausweisapp
+
+    # Tor
     tor-browser-bundle-bin
   ];
 
