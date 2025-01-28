@@ -39,6 +39,14 @@
         servers = {
           lua-ls.enable = true;
           nil-ls.enable = true;
+          nixd = {
+            enable = true;
+            settings.options = {
+              home_manager.expr = ''
+                let configs = (builtins.getFlake ("git+file://" + builtins.toString ./.)).homeConfigurations; in (builtins.head (builtins.attrValues configs)).options
+              '';
+            };
+          };
           pyright.enable = true;
           cmake.enable = true;
           clangd.enable = true;
