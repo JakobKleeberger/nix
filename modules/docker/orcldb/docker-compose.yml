@@ -1,6 +1,6 @@
 services:
   oracle-db:
-    image: container-registry.oracle.com/database/enterprise:latest
+    image: container-registry.oracle.com/database/free:latest
     environment:
       - ORACLE_SID=ORCLCDB
       - ORACLE_PDB=ORCLPDB1

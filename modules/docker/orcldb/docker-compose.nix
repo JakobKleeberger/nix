@@ -11,7 +11,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."orcldb-oracle-db" = {
-    image = "container-registry.oracle.com/database/enterprise:latest";
+    image = "container-registry.oracle.com/database/free:latest";
     environment = {
       "ORACLE_PDB" = "ORCLPDB1";
       "ORACLE_PWD" = "oracle";
