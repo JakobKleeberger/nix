@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
+    # nixvim.url = "github:nix-community/nixvim";
+    nvim.url = "github:jakobkleeberger/nixvim";
     stylix.url = "github:danth/stylix";
     # sops-nix.url = "github:Mic92/sops-nix";
 
@@ -14,8 +15,7 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , ...
     } @ inputs: {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
@@ -41,7 +41,6 @@
         modules = [
           ./hosts/homelab/configuration.nix
           inputs.home-manager.nixosModules.default
-          # inputs.stylix.nixosModules.stylix
           # inputs.sops-nix.nixosModules.sops
         ];
       };
@@ -50,7 +49,6 @@
         modules = [
           ./hosts/nas/configuration.nix
           inputs.home-manager.nixosModules.default
-          # inputs.stylix.nixosModules.stylix
           # inputs.sops-nix.nixosModules.sops
         ];
       };

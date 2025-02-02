@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config
 , pkgs
+, nixpkgs
 , inputs
 , ...
 }: {
@@ -104,7 +105,7 @@
   services.blueman.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -154,46 +155,44 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # Hyprland dependencies
-    waybar
-    hyprlock
-    hyprpaper
-    wofi
+    pkgs.waybar
+    pkgs.hyprlock
+    pkgs.hyprpaper
+    pkgs.wofi
     # Bluetooth Manager
     # Python3
-    python312Full
-    poetry
+    pkgs.python312Full
+    pkgs.poetry
     # Audio
-    pavucontrol
+    pkgs.pavucontrol
     #  Man Pages
-    man-pages
-    man-pages-posix
+    pkgs.pkgs.man-pages
+    pkgs.man-pages-posix
 
     # Versioning
-    git
-    gitui
+    pkgs.pkgs.git
+    pkgs.gitui
 
     # Tools
-    unzip
-    age
-    neofetch
-    wget
-    dua
-    emacs29-pgtk
+    pkgs.unzip
+    pkgs.age
+    pkgs.neofetch
+    pkgs.wget
+    pkgs.dua
 
     # Polkit
-    polkit_gnome
-    kdePackages.polkit-kde-agent-1
+    pkgs.polkit_gnome
+    pkgs.kdePackages.polkit-kde-agent-1
 
     # Tailscale
-    tailscale
+    pkgs.tailscale
 
-    # Ausweisapp
-    ausweisapp
-
-    # Tor
-    tor-browser-bundle-bin
+    # Apps
+    pkgs.ausweisapp
+    pkgs.signal-desktop
+    pkgs.tor-browser-bundle-bin
   ];
 
   # Activate Nix Flakes and nix-command
@@ -215,7 +214,7 @@
   services.tailscale.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5555 ];
+  networking.firewall.allowedTCPPorts = [ 22 5555 ];
   networking.firewall.allowedUDPPorts = [ 41641 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -226,5 +225,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

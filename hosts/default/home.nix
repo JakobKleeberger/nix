@@ -12,24 +12,26 @@
   home.username = "jakob";
   home.homeDirectory = "/home/jakob";
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
-    ripgrep
+  home.packages = [
+    pkgs.ripgrep
     # Microsoft Teams
-    teams-for-linux
+    pkgs.teams-for-linux
     # Dia
-    dia
+    pkgs.dia
     # Spotify
-    spotify
+    pkgs.spotify
     # Power Manager
-    powertop
+    pkgs.powertop
     # Drawio
-    drawio
+    pkgs.drawio
     # Libreoffice
-    libreoffice
+    pkgs.libreoffice
+
+    inputs.nvim.packages.x86_64-linux.default
   ];
 
   home.file = {
