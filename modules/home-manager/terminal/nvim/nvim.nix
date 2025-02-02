@@ -147,12 +147,8 @@
         };
       };
 
-      floaterm = {
+      wezterm = {
         enable = true;
-
-        keymaps = {
-          toggle = "<Alt-I>";
-        };
       };
     };
 

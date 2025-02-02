@@ -18,17 +18,17 @@
 
   stylix.fonts = {
     serif = {
-      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+      package = pkgs.nerd-fonts.noto;
       name = "Noto";
     };
 
     sansSerif = {
-      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+      package = pkgs.nerd-fonts.noto;
       name = "Noto";
     };
 
     monospace = {
-      package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+      package = pkgs.nerd-fonts.noto;
       name = "Noto";
     };
 

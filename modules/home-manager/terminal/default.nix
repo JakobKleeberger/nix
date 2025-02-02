@@ -1,6 +1,6 @@
-{...}: {
+{ ... }: {
   imports = [
-    ./nvim
+    # ./nvim
     ./fish
     ./lf
     ./yazi
