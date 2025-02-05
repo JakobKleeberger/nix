@@ -26,6 +26,8 @@
     bottom
     # Keepass
     keepassxc
+
+    inputs.nvim.packages.x86_64-linux.default
   ];
 
   home.file = { };
