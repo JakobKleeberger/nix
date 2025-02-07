@@ -30,6 +30,8 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "swt-kleeberger-lx"; # Define your hostname.
+  # networking.proxy.default = "wwwproxy.ser.net";
+  # networking.proxy.noProxy = "localhost, *ser.de";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -94,6 +96,8 @@
     };
   };
 
+  virtualisation.vmware.host.enable = true;
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -111,29 +115,13 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    settings = {
-      global = {
-        "workgroup" = "WORKGROUP";
-        "server string" = "smbnix";
-        "netbios name" = "smbnix";
-        "security" = "auto";
-        #"use sendfile" = "yes";
-        #"max protocol" = "smb2";
-        # note: localhost is the ipv6 localhost ::1
-        "hosts allow" = "*";
-        "hosts deny" = "0.0.0.0/0";
-        "guest account" = "nobody";
-        "map to guest" = "bad user";
-      };
-      "public" = {
-        "path" = "/mnt/Shares/Public";
-        "browseable" = "yes";
-        "read only" = "no";
-        "guest ok" = "yes";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
+    securityType = "user";
+    shares = {
+      public = {
+        path = "/public/";
+	"read only" = false;
+	browsable = "yes";
+	"guest ok" = "yes";
       };
     };
   };
@@ -210,6 +198,9 @@
     waybar
     hyprpaper
     hyprlock
+    hyprshot
+    hypridle
+    swaynotificationcenter
     wofi
     wayvnc
     # Bluetooth Manager
@@ -221,8 +212,11 @@
     #  Man Pages
     man-pages
     man-pages-posix
-    # Intellij
+
+    # Applications
     jetbrains.idea-ultimate
+    ghostty
+
 
     # Java
     maven
@@ -330,7 +324,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5900 ];
+  networking.firewall.allowedTCPPorts = [ 5900 8080 ];
   networking.firewall.allowedUDPPorts = [ 5900 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

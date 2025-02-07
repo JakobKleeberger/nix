@@ -26,11 +26,16 @@
     bottom
     # Keepass
     keepassxc
+    
+    vmware-workstation
 
     inputs.nvim.packages.x86_64-linux.default
   ];
 
-  home.file = { };
+  home.file = {
+    ".config/hypr".source = ../../dotfiles/hypr;
+    ".config/waybar".source = ../../dotfiles/waybar;
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
