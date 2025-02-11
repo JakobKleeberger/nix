@@ -232,7 +232,7 @@
     dua
 
     age
-    neofetch
+    fastfetch
     wget
     polkit_gnome
 

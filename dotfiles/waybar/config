@@ -31,18 +31,6 @@
         "spacing": 16,
         "on-scroll-up": "hyprctl dispatch workspace r+1",
         "on-scroll-down": "hyprctl dispatch workspace r-1",
-         "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
-             "9": "",
-             "0": "",
-             "urgent": "",
-             "focused": "",
-             "default": ""
-         },
     },
     "custom/os_button": {
         "format": "",
@@ -116,13 +104,12 @@
         }
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%)   ",
+        "format-wifi": "{essid} {signalStrength}%   ",
         "format-ethernet": "{ipaddr}/{cidr} 󰌗 ",
         "tooltip-format": "{ifname} via {gwaddr} 󰌗 ",
         "format-linked": "{ifname} (No IP) 󰌗 ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "format-wifi": " {icon}",
     },
     "battery": {
         "states": {
@@ -130,7 +117,7 @@
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
+        "format": "{capacity}% {icon} ",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
