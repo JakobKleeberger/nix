@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   stylix.enable = true;
 
-  stylix.image = ./wallpapers/starry-sky-purple-sky-astronomical-stars-5k-3840x2160-1022.jpg;
+  stylix.image = ./wallpapers/mountains.jpg;
   stylix.opacity.terminal = 0.8;
 
   stylix.polarity = "dark";
