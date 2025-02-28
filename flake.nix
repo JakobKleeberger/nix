@@ -27,6 +27,15 @@
           # inputs.sops-nix.nixosModules.sops
         ];
       };
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/desktop/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+          # inputs.sops-nix.nixosModules.sops
+        ];
+      };
       nixosConfigurations.work = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
