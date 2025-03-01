@@ -29,11 +29,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.enable = true;
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -86,6 +81,7 @@
     neovim
     git
     tailscale
+    btrfs-progs
   ];
 
   # Activate Nix Flakes and nix-command
@@ -100,6 +96,18 @@
   # };
 
   # List services that you want to enable:
+
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud30;
+    hostName = "localhost";
+    home = "/mnt/raid/nextcloud";
+    appstoreEnable = true;
+    config.adminpassFile = "/etc/nextcloud-admin-pass";
+    settings = {
+      trusted_domains = [ "*" ];
+    };
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
