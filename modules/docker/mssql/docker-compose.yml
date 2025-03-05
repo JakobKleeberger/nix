@@ -1,7 +1,15 @@
- sqldata:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+services:
+  mssql:
+    container_name: mssql
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
     environment:
-      - SA_PASSWORD=Pass@word
-      - ACCEPT_EULA=Y
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "mssql"
     ports:
-      - "5434:1433"
+      - 1433:1433
+    volumes:
+      - my-volume:/var/opt/mssql
+      
+volumes:
+  my-volume:
