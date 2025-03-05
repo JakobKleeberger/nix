@@ -10,38 +10,30 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."mssql" = {
-    image = "mcr.microsoft.com/mssql/server:2019-latest";
+  virtualisation.oci-containers.containers."mssql-sqldata" = {
+    image = "mcr.microsoft.com/mssql/server:2017-latest";
     environment = {
       "ACCEPT_EULA" = "Y";
       "SA_PASSWORD" = "mssql";
     };
-    volumes = [
-      "mssql_my-volume:/var/opt/mssql:rw"
-    ];
     ports = [
       "1433:1433/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=mssql"
+      "--network-alias=sqldata"
       "--network=mssql_default"
     ];
   };
-  systemd.services."docker-mssql" = {
+  systemd.services."docker-mssql-sqldata" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
+      Restart = lib.mkOverride 90 "no";
     };
     after = [
       "docker-network-mssql_default.service"
-      "docker-volume-mssql_my-volume.service"
     ];
     requires = [
       "docker-network-mssql_default.service"
-      "docker-volume-mssql_my-volume.service"
     ];
     partOf = [
       "docker-compose-mssql-root.target"
@@ -61,20 +53,6 @@
     };
     script = ''
       docker network inspect mssql_default || docker network create mssql_default
-    '';
-    partOf = [ "docker-compose-mssql-root.target" ];
-    wantedBy = [ "docker-compose-mssql-root.target" ];
-  };
-
-  # Volumes
-  systemd.services."docker-volume-mssql_my-volume" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      docker volume inspect mssql_my-volume || docker volume create mssql_my-volume
     '';
     partOf = [ "docker-compose-mssql-root.target" ];
     wantedBy = [ "docker-compose-mssql-root.target" ];

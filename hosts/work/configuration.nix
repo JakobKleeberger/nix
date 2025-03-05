@@ -19,6 +19,7 @@
 
     ../../modules/docker/postgres/docker-compose.nix
     ../../modules/docker/orcldb/docker-compose.nix
+    ../../modules/docker/mssql/docker-compose.nix
   ];
 
   # Bootloader.

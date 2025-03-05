@@ -1,4 +1,4 @@
-# Auto-generated using compose2nix v0.2.3.
+# Auto-generated using compose2nix v0.3.1.
 { pkgs, lib, ... }:
 
 {
@@ -10,43 +10,36 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."orcldb-oracle-db" = {
+  virtualisation.oci-containers.containers."orcldb-db" = {
     image = "container-registry.oracle.com/database/free:latest";
     environment = {
-      "ORACLE_PDB" = "ORCLPDB1";
       "ORACLE_PWD" = "oracle";
-      "ORACLE_SID" = "ORCLCDB";
     };
     volumes = [
-      "orcldb_oracle-backup:/opt/oracle/backup:rw"
-      "orcldb_oracle-data:/opt/oracle/oradata:rw"
+      "/home/jakob/.nix/modules/docker/orcldb/setup-scripts:/opt/oracle/scripts/setup:rw"
     ];
     ports = [
       "1521:1521/tcp"
+      "5500:5500/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
-      "--health-cmd=[\"sqlplus\",\"-L\",\"sys/Oracle_123@//localhost:1521/ORCLCDB as sysdba\",\"@healthcheck.sql\"]"
-      "--health-interval=30s"
-      "--health-retries=5"
-      "--health-timeout=10s"
-      "--network-alias=oracle-db"
+      "--network-alias=db"
       "--network=orcldb_default"
     ];
   };
-  systemd.services."docker-orcldb-oracle-db" = {
+  systemd.services."docker-orcldb-db" = {
     serviceConfig = {
-      Restart = lib.mkOverride 500 "no";
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
     };
     after = [
       "docker-network-orcldb_default.service"
-      "docker-volume-orcldb_oracle-backup.service"
-      "docker-volume-orcldb_oracle-data.service"
     ];
     requires = [
       "docker-network-orcldb_default.service"
-      "docker-volume-orcldb_oracle-backup.service"
-      "docker-volume-orcldb_oracle-data.service"
     ];
     partOf = [
       "docker-compose-orcldb-root.target"
@@ -66,32 +59,6 @@
     };
     script = ''
       docker network inspect orcldb_default || docker network create orcldb_default
-    '';
-    partOf = [ "docker-compose-orcldb-root.target" ];
-    wantedBy = [ "docker-compose-orcldb-root.target" ];
-  };
-
-  # Volumes
-  systemd.services."docker-volume-orcldb_oracle-backup" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      docker volume inspect orcldb_oracle-backup || docker volume create orcldb_oracle-backup
-    '';
-    partOf = [ "docker-compose-orcldb-root.target" ];
-    wantedBy = [ "docker-compose-orcldb-root.target" ];
-  };
-  systemd.services."docker-volume-orcldb_oracle-data" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      docker volume inspect orcldb_oracle-data || docker volume create orcldb_oracle-data
     '';
     partOf = [ "docker-compose-orcldb-root.target" ];
     wantedBy = [ "docker-compose-orcldb-root.target" ];
