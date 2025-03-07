@@ -160,6 +160,15 @@
     ];
   };
 
+  users.users.csb124 = {
+    isNormalUser = true;
+    description = "csb124";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+  };
+
   programs.hyprland.enable = true;
 
   # Install firefox.
@@ -185,6 +194,7 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       "jakob" = import ./home.nix;
+      "csb124" = import ./homecsb124.nix;
     };
   };
 
