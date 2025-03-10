@@ -6,9 +6,11 @@
     "gtk-layer-shell": true,
     "margin-bottom": -1,
     "passthrough": false,
-    "height": 41,
+    "height": 33,
     "modules-left": [
+	"custom/os_button",
         "hyprland/workspaces",
+        "hyprland/window",
     ],
     "modules-center": [],
     "modules-right": [
@@ -18,7 +20,6 @@
         "pulseaudio",
         "network",
         "battery",
-        "hyprland/language",
         "clock"
     ],
     "hyprland/language": {
@@ -32,6 +33,9 @@
         "on-scroll-up": "hyprctl dispatch workspace r+1",
         "on-scroll-down": "hyprctl dispatch workspace r-1",
     },
+    "hyprland/window": {
+        "format": "{initialTitle}",
+    },
     "custom/os_button": {
         "format": "",
         "on-click": "wofi --show drun",
@@ -39,7 +43,7 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "  {usage}%",
+        "format": "{usage}%  ",
         "max-length": 10
     },
     "temperature": {
@@ -60,7 +64,7 @@
     },
     "memory": {
         "interval": 10,
-        "format": "  {percentage}%",
+        "format": "{percentage}%  ",
         "max-length": 10,
         "tooltip": true,
         "tooltip-format": "RAM - {used:0.1f}GiB used"
@@ -79,7 +83,7 @@
         "spacing": 3
     },
     "clock": {
-        "format": "      {:%R\n %d.%m.%Y}",
+        "format": "{:%R}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -104,12 +108,13 @@
         }
     },
     "network": {
-        "format-wifi": "{essid} {signalStrength}%   ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰌗 ",
-        "tooltip-format": "{ifname} via {gwaddr} 󰌗 ",
-        "format-linked": "{ifname} (No IP) 󰌗 ",
+        "format-wifi": "{essid}  ",
+        "format-ethernet": "󰌗 ",
+        "tooltip-format-ethernet": "{ipaddr}",
+        "tooltip-format-wifi": "{ipaddr}",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"on-click": "nmcli",
     },
     "battery": {
         "states": {
@@ -146,7 +151,7 @@
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 10,
-        "format": "{icon}",
+        "format": "{volume}% {icon}",
         "tooltip-format": "{volume}%",
         "format-muted": " ",
         "format-icons": {
