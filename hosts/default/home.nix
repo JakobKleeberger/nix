@@ -37,6 +37,7 @@
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/waybar".source = ../../dotfiles/waybar;
+    # ".config/emacs".source = ../../dotfiles/emacs;
     "Pictures/wallpapers".source = ../../modules/nixos/util/stylix/wallpapers;
   };
 

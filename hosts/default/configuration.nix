@@ -50,6 +50,7 @@
     packages = with pkgs; [
       jetbrains-mono
       nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
     ];
   };
 
@@ -164,6 +165,7 @@
     pkgs.waybar
     pkgs.hyprlock
     pkgs.hyprpaper
+    pkgs.hyprshot
     pkgs.wofi
     # Bluetooth Manager
     # Python3
@@ -185,6 +187,8 @@
     pkgs.fastfetch
     pkgs.wget
     pkgs.dua
+    pkgs.coreutils
+    pkgs.fd
 
     # Polkit
     pkgs.polkit_gnome
@@ -194,11 +198,13 @@
     pkgs.tailscale
 
     # Apps
+    pkgs.ghostty
     pkgs.ausweisapp
     pkgs.signal-desktop
     pkgs.tor-browser-bundle-bin
     pkgs.discord
     pkgs.ciscoPacketTracer8
+    pkgs.emacs-nox
   ];
 
   # Activate Nix Flakes and nix-command
