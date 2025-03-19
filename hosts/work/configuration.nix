@@ -17,7 +17,8 @@
     ../../modules/nixos/util/keyd
     # ../../modules/home-manager/work
 
-    ../../modules/docker/postgres/docker-compose.nix
+    # ../../modules/docker/postgres/csb14/docker-compose.nix
+    # ../../modules/docker/postgres/csb124/docker-compose.nix
     ../../modules/docker/orcldb/docker-compose.nix
     ../../modules/docker/mssql/docker-compose.nix
   ];
@@ -277,7 +278,8 @@
   ];
 
   environment.sessionVariables = rec {
-    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
+    # SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
+    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-26.1.3.Final/standalone/deployments";
 
     SEDNA_VERSION = "/home/jakob/dev/swt.products.sedna";
     WILDFLY_VERSION = "32.0.1";

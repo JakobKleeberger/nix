@@ -1,19 +1,18 @@
 services:
-  postgres:
-    container_name: postgres_container
+  csb124_postgres:
+    container_name: csb124_postgres
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgrepostgres
-      postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
-       - postgres:/data/postgres
+       - csb124_postgres:/data/csb124_postgres
     ports:
       - "5432:5432"
-    networks:
-      - postgres
+    # networks:
+    #   - csb124_postgres
     restart: unless-stopped
-  
+
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
@@ -26,14 +25,14 @@ services:
 
     ports:
       - "5050:80"
-    networks:
-      - postgres
+    # networks:
+    #   - csb124_postgres
     restart: unless-stopped
-
-networks:
-  postgres:
-    driver: bridge
-
+  
+# networks:
+#   csb124_postgres:
+#     driver: bridge
+#
 volumes:
-    postgres:
+    csb124_postgres:
     pgadmin:
