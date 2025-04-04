@@ -198,6 +198,7 @@
     # Apps
     pkgs.ausweisapp
     pkgs.signal-desktop
+    pkgs.telegram-desktop
     pkgs.tor-browser-bundle-bin
     pkgs.discord
   ];
