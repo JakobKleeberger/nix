@@ -61,6 +61,7 @@
     packages = with pkgs; [
       jetbrains-mono
       nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
     ];
   };
 
@@ -117,8 +118,8 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    securityType = "user";
-    shares = {
+    settings = {
+      global.security = "user";
       public = {
         path = "/public/";
 	"read only" = false;
@@ -161,15 +162,6 @@
     ];
   };
 
-  users.users.csb124 = {
-    isNormalUser = true;
-    description = "csb124";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
-  };
-
   programs.hyprland.enable = true;
 
   # Install firefox.
@@ -195,7 +187,6 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       "jakob" = import ./home.nix;
-      "csb124" = import ./homecsb124.nix;
     };
   };
 
@@ -228,6 +219,7 @@
     # Applications
     jetbrains.idea-ultimate
     ghostty
+    emacs-nox
 
 
     # Java
@@ -242,6 +234,7 @@
     subversion
 
     dua
+    fd
 
     age
     fastfetch
@@ -253,7 +246,7 @@
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
       in
-      pkgs.buildFHSUserEnv (base
+      pkgs.buildFHSEnv (base
         // {
         name = "fhs";
         targetPkgs = pkgs:
