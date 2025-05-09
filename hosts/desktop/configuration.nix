@@ -94,7 +94,6 @@
   services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -201,6 +200,9 @@
     pkgs.telegram-desktop
     pkgs.tor-browser-bundle-bin
     pkgs.discord
+    pkgs.vesktop
+    pkgs.ghostty
+    pkgs.gparted
   ];
 
   # Activate Nix Flakes and nix-command
