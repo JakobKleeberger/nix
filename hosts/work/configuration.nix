@@ -219,7 +219,7 @@
     # Applications
     jetbrains.idea-ultimate
     ghostty
-    emacs-nox
+    emacs
 
 
     # Java
