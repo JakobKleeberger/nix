@@ -30,6 +30,9 @@
     vmware-workstation
 
     inputs.nvim.packages.x86_64-linux.default
+
+    tree
+    pkgs.texlive.combined.scheme-full
   ];
 
   home.file = {
@@ -41,6 +44,38 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  programs.emacs = {
+    enable = true;
+    # package = pkgs.emacs-pgtk;
+    package = pkgs.emacs-nox;
+    extraPackages = epkgs: [
+      epkgs.treesit-grammars.with-all-grammars
+
+      pkgs.jetbrains-mono
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
+
+      # Rust
+      pkgs.rust-analyzer
+      pkgs.rustfmt
+      pkgs.cargo
+      pkgs.gcc_multi
+      # Python
+      pkgs.pyright
+      pkgs.ruff
+      # Nix
+      pkgs.nil
+      pkgs.nixd
+      pkgs.nixdoc
+      pkgs.nixfmt-classic
+      # Latex
+      pkgs.gnuplot
+      # Java
+      pkgs.jdt-language-server
+    ];
+  };
+
 
   programs.bash.enable = true;
 

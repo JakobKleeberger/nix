@@ -1,0 +1,71 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Convenience
+set relativenumber
+set number                        " line numbers
+
+set hlsearch                      " highlight search occurrences
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set incsearch                     " show search results while typing
+set wrapscan                      " searches wrap around the end of the file
+
+set gdefault                      " substitute all occurrences in line per default
+set history=10000                 " keep x lines of command line history
+set scrolloff=5 sidescrolloff=10  " keep some lines before and after the cursor visible
+set clipboard=unnamedplus,unnamed,ideaput " integrate with system clipboard
+
+" Plugins
+set multiple-cursors
+set commentary
+set surround                      " emulate vim-surround plugin
+set ideajoin
+set ideastatusicon=disabled
+set highlightedyank
+
+" set <leader> to <space>
+let mapleader = " "
+
+" edit ideavim config
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" simple closing and saving
+nnoremap <leader>sa <Action>(SaveAll)
+nnoremap <leader>caa <Action>(CloseAllTabs)
+
+" IDEA things
+nmap gu <Action>(ShowUsages)
+nmap gi <Action>(GotoImplementation)
+nmap gs <Action>(GotoSuperMethod)
+
+nmap <leader>rr <Action>(RenameElement)
+nmap <leader>rev <Action>(IntroduceVariable)
+vmap <leader>rev <Action>(IntroduceVariable)
+nmap <leader>rem <Action>(ExtractMethod)
+vmap <leader>rem <Action>(ExtractMethod)
+nmap <leader>rm <Action>(Move)
+nmap <leader>ro <Action>(OptimizeImports)
+nmap <leader>rG <Action>(Generate)
+nmap <leader>f  <Action>(ReformatCode)
+nmap <leader>b <Action>(Back)
+
+" Harpoon
+nmap <C-1> <action>(HarpoonerOpenFile0)
+nmap <C-2> <action>(HarpoonerOpenFile1)
+nmap <C-3> <action>(HarpoonerOpenFile2)
+nmap <C-4> <action>(HarpoonerOpenFile3)
+nmap <leader>hm <action>(HarpoonerQuickMenu)
+nmap <leader>ha <action>(HarpoonerAddFile)
+nmap <leader>hn <action>(HarpoonerNextFileAction)
+nmap <leader>hp <action>(HarpoonerPreviousFileAction)
+
+map <leader>ff <Action>(SearchEverywhere)
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
