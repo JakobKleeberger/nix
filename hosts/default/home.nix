@@ -20,6 +20,7 @@
     teams-for-linux
     spotify
     libreoffice
+    jetbrains.idea-ultimate
 
     inputs.nvim.packages.x86_64-linux.default
 
