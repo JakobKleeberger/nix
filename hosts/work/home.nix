@@ -39,6 +39,7 @@
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/waybar".source = ../../dotfiles/waybar;
     "Pictures/wallpapers".source = ../../modules/nixos/util/stylix/wallpapers;
+    "~/".source = ../../dotfiles/idea;
   };
 
   home.sessionVariables = {
