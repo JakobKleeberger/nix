@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , inputs
 , ...
 }: {
@@ -14,24 +13,31 @@
 
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  fonts.fontconfig.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = [
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    ripgrep
     # Microsoft Teams
-    pkgs.teams-for-linux
+    teams-for-linux
     # Dia
-    pkgs.dia
+    dia
     # Spotify
-    pkgs.spotify
+    spotify
     # Power Manager
-    pkgs.powertop
+    powertop
     # Drawio
-    pkgs.drawio
+    drawio
     # Libreoffice
-    pkgs.libreoffice
+    libreoffice
+    jetbrains.idea-ultimate
 
     inputs.nvim.packages.x86_64-linux.default
+
+    # Emacs
+    tree
+    texlive.combined.scheme-full
   ];
 
   home.file = {
@@ -49,6 +55,37 @@
     userName = "JakobKleeberger";
     userEmail = "kleeberger.jakob@aol.com";
     lfs.enable = true;
+  };
+
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [
+      epkgs.treesit-grammars.with-all-grammars
+
+      pkgs.jetbrains-mono
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
+
+      # Rust
+      pkgs.rust-analyzer
+      pkgs.rustfmt
+      pkgs.cargo
+      pkgs.gcc_multi
+      # Python
+      pkgs.pyright
+      pkgs.ruff
+      # Nix
+      pkgs.nil
+      pkgs.nixd
+      pkgs.nixdoc
+      pkgs.nixfmt-classic
+      # Latex
+      pkgs.gnuplot
+      # Java
+      pkgs.jdt-language-server
+    ];
   };
 
   programs.bash.enable = true;

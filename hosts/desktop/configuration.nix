@@ -145,6 +145,16 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    skia
+    skia-aseprite
+    fontconfig
+    xorg.libX11
+    xorg.libICE
+    xorg.libSM
+  ];
+
   home-manager.backupFileExtension = "backup";
 
   home-manager = {
@@ -160,49 +170,51 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs;[
     # Hyprland dependencies
-    pkgs.waybar
-    pkgs.hyprlock
-    pkgs.hyprpaper
-    pkgs.wofi
+    waybar
+    hyprlock
+    hyprpaper
+    wofi
     # Bluetooth Manager
     # Python3
-    pkgs.python312Full
-    pkgs.poetry
+    python312Full
+    poetry
     # Audio
-    pkgs.pavucontrol
+    pavucontrol
     #  Man Pages
-    pkgs.pkgs.man-pages
-    pkgs.man-pages-posix
+    pkgs.man-pages
+    man-pages-posix
+    appimage-run
+    icu
 
     # Versioning
-    pkgs.pkgs.git
-    pkgs.gitui
+    pkgs.git
+    gitui
 
     # Tools
-    pkgs.unzip
-    pkgs.age
-    pkgs.fastfetch
-    pkgs.wget
-    pkgs.dua
+    unzip
+    age
+    fastfetch
+    wget
+    dua
 
     # Polkit
-    pkgs.polkit_gnome
-    pkgs.kdePackages.polkit-kde-agent-1
+    polkit_gnome
+    kdePackages.polkit-kde-agent-1
 
     # Tailscale
-    pkgs.tailscale
+    tailscale
 
     # Apps
-    pkgs.ausweisapp
-    pkgs.signal-desktop
-    pkgs.telegram-desktop
-    pkgs.tor-browser-bundle-bin
-    pkgs.discord
-    pkgs.vesktop
-    pkgs.ghostty
-    pkgs.gparted
+    ausweisapp
+    signal-desktop
+    telegram-desktop
+    tor-browser-bundle-bin
+    discord
+    vesktop
+    ghostty
+    gparted
   ];
 
   # Activate Nix Flakes and nix-command
