@@ -1,0 +1,116 @@
+(undo-tree-save-format-version . 1)
+"55a676897544aaba48c551e7b2ebd00e9a1f9ebb"
+[nil nil nil nil (26667 24130 952819 759000) 0 nil]
+([nil nil ((#("    =======
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    >>>>>>> 18c7737 (Revert \"added tailscale to homelab\")
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 14 (fontified t) 14 15 (face indent-bars-1 fontified t) 15 16 (fontified t) 16 65 (face font-lock-comment-face fontified t) 65 67 (fontified t) 67 68 (face indent-bars-1 fontified t) 68 69 (fontified t) 69 118 (face font-lock-comment-face fontified t) 118 120 (fontified t) 120 121 (face indent-bars-1 fontified t) 121 138 (fontified t) 138 139 (face (rainbow-delimiters-depth-2-face) fontified t) 139 146 (fontified t) 146 147 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 147 173 (face font-lock-string-face fontified t) 173 174 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 174 175 (face (rainbow-delimiters-depth-2-face) fontified t) 175 176 (fontified t)) . 3316) (undo-tree-id53 . -175) (t 26667 23012 743568 606000)) nil (26667 24130 952817 499000) 0 nil])
+([nil nil ((#("      <<<<<<< HEAD
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 4 (fontified t) 4 5 (face indent-bars-2 fontified t) 5 19 (fontified t)) . 3032) (undo-tree-id52 . -18)) nil (26667 24130 952815 899000) 0 nil])
+([nil nil ((#("    <<<<<<< HEAD
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 17 (fontified t)) . 2855) (undo-tree-id51 . -16)) nil (26667 24130 952814 49000) 0 nil])
+([nil nil ((#("  == =====
+" 0 11 (fontified t)) . 3884) (undo-tree-id50 . -10)) nil (26667 24130 952812 699000) 0 nil])
+([nil nil ((#("> > > >>>> c8af4c1 (Reapply \"added tailscale to homelab\")
+" 0 19 (fontified t) 19 20 (face (rainbow-delimiters-unmatched-face) fontified t) 20 28 (fontified t) 28 29 (face font-lock-string-face fontified t nix-string-type 34 syntax-table (15)) 29 55 (face font-lock-string-face fontified t) 55 56 (face font-lock-string-face fontified t nix-string-type 34 syntax-table (15)) 56 57 (face (rainbow-delimiters-unmatched-face) fontified t) 57 58 (fontified t)) . 4729) (undo-tree-id48 . -57) (undo-tree-id49 . -3) 4732) nil (26667 24130 952811 589000) 0 nil])
+([nil nil ((#("
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 41641 ];
+
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = \"24.05\"; # Did you read the comment?
+" 0 3 (fontified t) 3 33 (face font-lock-comment-face fontified t) 33 35 (fontified t) 35 70 (face nix-attribute-face fontified t) 70 73 (fontified t) 73 74 (face (rainbow-delimiters-depth-1-face) fontified t) 74 78 (fontified t) 78 79 (face (rainbow-delimiters-depth-1-face) fontified t) 79 83 (fontified t) 83 118 (face nix-attribute-face fontified t) 118 121 (fontified t) 121 122 (face (rainbow-delimiters-depth-1-face) fontified t) 122 129 (fontified t) 129 130 (face (rainbow-delimiters-depth-1-face) fontified t) 130 135 (fontified t) 135 173 (face font-lock-comment-face fontified t) 173 175 (fontified t) 175 213 (face font-lock-comment-face fontified t) 213 216 (fontified t) 216 281 (face font-lock-comment-face fontified t) 281 283 (fontified t) 283 296 (face font-lock-comment-face fontified t) 296 355 (face font-lock-comment-face fontified t) 355 357 (fontified t) 357 379 (face font-lock-comment-face fontified t) 379 431 (face font-lock-comment-face fontified t) 431 433 (fontified t) 433 506 (face font-lock-comment-face fontified t) 506 508 (fontified t) 508 537 (face font-lock-comment-face fontified t) 537 576 (face font-lock-comment-face fontified t) 576 578 (fontified t) 578 653 (face font-lock-comment-face fontified t) 653 655 (fontified t) 655 674 (face nix-attribute-face fontified t) 674 677 (fontified t) 677 678 (face font-lock-string-face fontified t nix-string-type 34 syntax-table (15)) 678 683 (face font-lock-string-face fontified t) 683 684 (face font-lock-string-face fontified t nix-string-type 34 syntax-table (15)) 684 686 (fontified t) 686 714 (face font-lock-comment-face fontified t)) . 4013) (undo-tree-id0 . -713) (undo-tree-id1 . -713) (undo-tree-id2 . -713) (undo-tree-id3 . -653) (undo-tree-id4 . -653) (undo-tree-id5 . -653) (undo-tree-id6 . -653) (undo-tree-id7 . -653) (undo-tree-id8 . -653) (undo-tree-id9 . -713) (undo-tree-id10 . -713) (undo-tree-id11 . -713) (undo-tree-id12 . -713) (undo-tree-id13 . -713) (undo-tree-id14 . -713) (undo-tree-id15 . -713) (undo-tree-id16 . -713) (undo-tree-id17 . -713) (undo-tree-id18 . -713) (undo-tree-id19 . -713) (undo-tree-id20 . -713) (undo-tree-id21 . -713) (undo-tree-id22 . -713) (undo-tree-id23 . -713) (undo-tree-id24 . -713) (undo-tree-id25 . -713) (undo-tree-id26 . -713) (undo-tree-id27 . -713) (undo-tree-id28 . -713) (undo-tree-id29 . -713) (undo-tree-id30 . -713) (undo-tree-id31 . -713) (undo-tree-id32 . -713) (undo-tree-id33 . -713) (undo-tree-id34 . -713) (undo-tree-id35 . -713) (undo-tree-id36 . -713) (undo-tree-id37 . -713) (undo-tree-id38 . -713) (undo-tree-id39 . -713) (undo-tree-id40 . -713) (undo-tree-id41 . -713) (undo-tree-id42 . -713) (undo-tree-id43 . -713) (undo-tree-id44 . -713) (undo-tree-id45 . -713) (undo-tree-id46 . -713) (undo-tree-id47 . -714) 4726) nil (26667 24130 952803 299000) 0 nil])
+([nil nil ((#("  # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+      # List services that you want to enable:
+
+      # Enable the OpenSSH daemon.
+      # services.openssh.enable = true;
+
+      # Open ports in the firewall.
+      networking.firewall.allowedTCPPorts = [
+      # SSH
+      22
+      # Website Landing Page
+      8080
+      80
+      # Keine Ahnung
+      5006
+      # Viewtube
+      8066
+    ];
+    networking.firewall.allowedUDPPorts = [
+      # Tailscale
+      41641
+    ];
+
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    system.stateVersion = \"24.05\"; # Did you read the comment?
+
+  }" 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t) 2 71 (face font-lock-comment-face fontified t) 71 73 (fontified t) 73 74 (face indent-bars-1 fontified t) 74 75 (fontified t) 75 103 (face font-lock-comment-face fontified t) 103 105 (fontified t) 105 106 (face indent-bars-1 fontified t) 106 107 (fontified t) 107 137 (face font-lock-comment-face fontified t) 137 139 (fontified t) 139 140 (face indent-bars-1 fontified t) 140 141 (fontified t) 141 168 (face font-lock-comment-face fontified t) 168 170 (fontified t) 170 171 (face indent-bars-1 fontified t) 171 172 (fontified t) 172 191 (face font-lock-comment-face fontified t) 191 193 (fontified t) 193 194 (face indent-bars-1 fontified t) 194 195 (fontified t) 195 224 (face font-lock-comment-face fontified t) 224 226 (fontified t) 226 227 (face indent-bars-1 fontified t) 227 228 (fontified t) 228 233 (face font-lock-comment-face fontified t) 233 234 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) rear-nonsticky t fontified t) 234 236 (fontified t) 236 237 (face indent-bars-1 fontified t) 237 238 (fontified t) 238 239 (face indent-bars-2 fontified t) 239 240 (fontified t) 240 280 (face font-lock-comment-face fontified t) 280 281 (face font-lock-comment-face fontified t) 281 282 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) rear-nonsticky t fontified t) 282 284 (fontified t) 284 285 (face indent-bars-1 fontified t) 285 286 (fontified t) 286 287 (face indent-bars-2 fontified t) 287 288 (fontified t) 288 317 (face font-lock-comment-face fontified t) 317 319 (fontified t) 319 320 (face indent-bars-1 fontified t) 320 321 (fontified t) 321 322 (face indent-bars-2 fontified t) 322 323 (fontified t) 323 357 (face font-lock-comment-face fontified t) 357 358 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) fontified t rear-nonsticky t) 358 360 (fontified t) 360 361 (face indent-bars-1 fontified t) 361 362 (fontified t) 362 363 (face indent-bars-2 fontified t) 363 364 (fontified t) 364 380 (face font-lock-comment-face fontified t) 380 394 (face font-lock-comment-face fontified t) 394 396 (fontified t) 396 397 (face indent-bars-1 fontified t) 397 398 (fontified t) 398 399 (face indent-bars-2 fontified t) 399 400 (fontified t) 400 435 (face nix-attribute-face fontified t) 435 438 (fontified t) 438 439 (face (rainbow-delimiters-depth-2-face) fontified t) 439 440 (fontified t) 440 442 (fontified t) 442 443 (face indent-bars-1 fontified t) 443 444 (fontified t) 444 445 (face indent-bars-2 fontified t) 445 446 (fontified t) 446 452 (face font-lock-comment-face fontified t) 452 454 (fontified t) 454 455 (face indent-bars-1 fontified t) 455 456 (fontified t) 456 457 (face indent-bars-2 fontified t) 457 463 (fontified t) 463 464 (face indent-bars-1 fontified t) 464 465 (fontified t) 465 466 (face indent-bars-2 fontified t) 466 467 (fontified t) 467 490 (face font-lock-comment-face fontified t) 490 492 (fontified t) 492 493 (face indent-bars-1 fontified t) 493 494 (fontified t) 494 495 (face indent-bars-2 fontified t) 495 503 (fontified t) 503 504 (face indent-bars-1 fontified t) 504 505 (fontified t) 505 506 (face indent-bars-2 fontified t) 506 512 (fontified t) 512 513 (face indent-bars-1 fontified t) 513 514 (fontified t) 514 515 (face indent-bars-2 fontified t) 515 516 (fontified t) 516 531 (face font-lock-comment-face fontified t) 531 533 (fontified t) 533 534 (face indent-bars-1 fontified t) 534 535 (fontified t) 535 536 (face indent-bars-2 fontified t) 536 544 (fontified t) 544 545 (face indent-bars-1 fontified t) 545 546 (fontified t) 546 547 (face indent-bars-2 fontified t) 547 548 (fontified t) 548 559 (face font-lock-comment-face fontified t) 559 561 (fontified t) 561 562 (face indent-bars-1 fontified t) 562 563 (fontified t) 563 564 (face indent-bars-2 fontified t) 564 572 (fontified t) 572 573 (face indent-bars-1 fontified t) 573 574 (fontified t) 574 575 (face (rainbow-delimiters-depth-2-face) fontified t) 575 579 (fontified t) 579 580 (face indent-bars-1 fontified t) 580 581 (fontified t) 581 616 (face nix-attribute-face fontified t) 616 619 (fontified t) 619 620 (face (rainbow-delimiters-depth-2-face) fontified t) 620 623 (fontified t) 623 624 (face indent-bars-1 fontified t) 624 625 (fontified t) 625 626 (face indent-bars-2 fontified t) 626 627 (fontified t) 627 639 (face font-lock-comment-face fontified t) 639 641 (fontified t) 641 642 (face indent-bars-1 fontified t) 642 643 (fontified t) 643 644 (face indent-bars-2 fontified t) 644 653 (fontified t) 653 654 (face indent-bars-1 fontified t) 654 655 (fontified t) 655 656 (face (rainbow-delimiters-depth-2-face) fontified t) 656 658 (fontified t) 658 659 (indent-bars-display #("   
+" 2 3 (face indent-bars-1)) fontified t rear-nonsticky t) 659 661 (fontified t) 661 662 (face indent-bars-1 fontified t) 662 663 (fontified t) 663 700 (face font-lock-comment-face fontified t) 700 701 (face font-lock-comment-face fontified t) 701 703 (fontified t) 703 704 (face indent-bars-1 fontified t) 704 705 (fontified t) 705 743 (face font-lock-comment-face fontified t) 743 744 (indent-bars-display #("   
+" 2 3 (face indent-bars-1)) fontified t rear-nonsticky t) 744 746 (fontified t) 746 747 (face indent-bars-1 fontified t) 747 748 (fontified t) 748 813 (face font-lock-comment-face fontified t) 813 815 (fontified t) 815 816 (face indent-bars-1 fontified t) 816 817 (fontified t) 817 889 (face font-lock-comment-face fontified t) 889 891 (fontified t) 891 892 (face indent-bars-1 fontified t) 892 893 (fontified t) 893 967 (face font-lock-comment-face fontified t) 967 969 (fontified t) 969 970 (face indent-bars-1 fontified t) 970 971 (fontified t) 971 1044 (face font-lock-comment-face fontified t) 1044 1046 (fontified t) 1046 1047 (face indent-bars-1 fontified t) 1047 1048 (fontified t) 1048 1116 (face font-lock-comment-face fontified t) 1116 1118 (fontified t) 1118 1119 (face indent-bars-1 fontified t) 1119 1120 (fontified t) 1120 1195 (face font-lock-comment-face fontified t) 1195 1197 (fontified t) 1197 1198 (face indent-bars-1 fontified t) 1198 1199 (fontified t) 1199 1218 (face nix-attribute-face fontified t) 1218 1221 (fontified t) 1221 1222 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1222 1227 (face font-lock-string-face fontified t) 1227 1228 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1228 1230 (fontified t) 1230 1258 (face font-lock-comment-face fontified t) 1258 1259 (indent-bars-display #("   
+" 2 3 (face indent-bars-1)) fontified t rear-nonsticky t) 1259 1261 (fontified t) 1261 1262 (face (rainbow-delimiters-depth-1-face) fontified t)) . 2621) (undo-tree-id119 . -1261) (undo-tree-id120 . -1261) (undo-tree-id121 . -1261) (undo-tree-id122 . -1261) 3882 (t 26667 24130 965979 454000)) nil (26667 24162 524211 843000) 0 nil])
+([nil nil ((2750 . 2753) 2747) nil (26667 24162 524208 463000) 0 nil])
+([nil nil ((#("  " 0 2 (fontified t)) . -2751) (undo-tree-id118 . -2) 2753) nil (26667 24162 524206 863000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 4012 . 4013) (nil fontified nil 2751 . 4013) (2751 . 4013)) nil (26667 24162 524203 203000) 0 nil])
+([nil nil ((#("  }
+" 0 2 (fontified t) 2 3 (face (rainbow-delimiters-depth-1-face) rear-nonsticky t fontified t) 3 4 (fontified t)) . 4010) (undo-tree-id114 . -3) (undo-tree-id115 . 1) (undo-tree-id116 . -4) (undo-tree-id117 . -2) 4012) nil (26667 24162 524201 363000) 0 nil])
+([nil nil ((2750 . 2753) 2746) nil (26667 24162 524197 753000) 0 nil])
+([nil nil ((#("  " 0 2 (fontified t)) . -2751) (undo-tree-id54 . -2) (undo-tree-id55 . -2) (undo-tree-id56 . -2) (undo-tree-id57 . -2) (undo-tree-id58 . -2) (undo-tree-id59 . -2) (undo-tree-id60 . -2) (undo-tree-id61 . -2) (undo-tree-id62 . -2) (undo-tree-id63 . -2) (undo-tree-id64 . -2) (undo-tree-id65 . -2) (undo-tree-id66 . -2) (undo-tree-id67 . -2) (undo-tree-id68 . -2) (undo-tree-id69 . -2) (undo-tree-id70 . -2) (undo-tree-id71 . -2) (undo-tree-id72 . -2) (undo-tree-id73 . -2) (undo-tree-id74 . -2) (undo-tree-id75 . -2) (undo-tree-id76 . -2) (undo-tree-id77 . -2) (undo-tree-id78 . -2) (undo-tree-id79 . -2) (undo-tree-id80 . -2) (undo-tree-id81 . -2) (undo-tree-id82 . -2) (undo-tree-id83 . -2) (undo-tree-id84 . -2) (undo-tree-id85 . -2) (undo-tree-id86 . -2) (undo-tree-id87 . -2) (undo-tree-id88 . -2) (undo-tree-id89 . -2) (undo-tree-id90 . -2) (undo-tree-id91 . -2) (undo-tree-id92 . -2) (undo-tree-id93 . -2) (undo-tree-id94 . -2) (undo-tree-id95 . -2) (undo-tree-id96 . -2) (undo-tree-id97 . -2) (undo-tree-id98 . -2) (undo-tree-id99 . -2) (undo-tree-id100 . -2) (undo-tree-id101 . -2) (undo-tree-id102 . -2) (undo-tree-id103 . -2) (undo-tree-id104 . -2) (undo-tree-id105 . -2) (undo-tree-id106 . -2) (undo-tree-id107 . -2) (undo-tree-id108 . -2) (undo-tree-id109 . -2) (undo-tree-id110 . -2) (undo-tree-id111 . -2) (undo-tree-id112 . -2) (undo-tree-id113 . -2) 2753) nil (26667 24162 524191 163000) 0 nil])
+([nil nil ((#("  # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+" 0 2 (fontified t) 2 71 (face font-lock-comment-face fontified t) 71 73 (fontified t) 73 74 (face indent-bars-1 fontified t) 74 75 (fontified t) 75 103 (face font-lock-comment-face fontified t) 103 105 (fontified t) 105 106 (face indent-bars-1 fontified t) 106 107 (fontified t) 107 137 (face font-lock-comment-face fontified t) 137 139 (fontified t) 139 140 (face indent-bars-1 fontified t) 140 141 (fontified t) 141 168 (face font-lock-comment-face fontified t) 168 170 (fontified t) 170 171 (face indent-bars-1 fontified t) 171 172 (fontified t) 172 191 (face font-lock-comment-face fontified t) 191 193 (fontified t) 193 194 (face indent-bars-1 fontified t) 194 195 (fontified t) 195 224 (face font-lock-comment-face fontified t) 224 226 (fontified t) 226 227 (face indent-bars-1 fontified t) 227 228 (fontified t) 228 233 (face font-lock-comment-face fontified t)) . 2752) (undo-tree-id139 . -232) (undo-tree-id140 . -233) (t 26667 24162 527041 99000)) nil (26667 24189 681341 162000) 0 nil])
+([nil nil ((#("
+" 0 1 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) fontified t rear-nonsticky t)) . 2752) (undo-tree-id137 . -1) (undo-tree-id138 . -1)) nil (26667 24189 681339 352000) 0 nil])
+([nil nil ((#("      # List services that you want to enable:
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 4 (fontified t) 4 5 (face indent-bars-2 fontified t) 5 6 (fontified t) 6 46 (face font-lock-comment-face fontified t) 46 47 (face font-lock-comment-face fontified t)) . 2752) (undo-tree-id133 . -46) (undo-tree-id134 . -46) (undo-tree-id135 . -47) (undo-tree-id136 . -47)) nil (26667 24189 681337 122000) 0 nil])
+([nil nil ((#("
+" 0 1 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) fontified t rear-nonsticky t)) . 2752) (undo-tree-id131 . -1) (undo-tree-id132 . -1)) nil (26667 24189 681333 642000) 0 nil])
+([nil nil ((#("      # Enable the OpenSSH daemon.
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 4 (fontified t) 4 5 (face indent-bars-2 fontified t) 5 6 (fontified t) 6 34 (face font-lock-comment-face fontified t) 34 35 (face font-lock-comment-face fontified t)) . 2752) (undo-tree-id128 . -34) (undo-tree-id129 . -34) (undo-tree-id130 . -35)) nil (26667 24189 681331 672000) 0 nil])
+([nil nil ((#("      # services.openssh.enable = true;
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 4 (fontified t) 4 5 (face indent-bars-2 fontified t) 5 6 (fontified t) 6 39 (face font-lock-comment-face fontified t) 39 40 (face font-lock-comment-face fontified t)) . 2752) (undo-tree-id125 . -39) (undo-tree-id126 . -39) (undo-tree-id127 . -40)) nil (26667 24189 681329 142000) 0 nil])
+([nil nil ((#("
+" 0 1 (indent-bars-display #("     
+" 2 3 (face indent-bars-1) 4 5 (face indent-bars-2)) fontified t rear-nonsticky t)) . 2752) (undo-tree-id123 . -1) (undo-tree-id124 . -1)) nil (26667 24189 681322 832000) 0 nil])
+([nil nil ((#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3533) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3456) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3386) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3311) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3235) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3161) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3094) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3053) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3013) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -3007) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2999) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2983) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -2939) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -2934) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2927) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2912) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2903) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2884) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2877) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2868) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2841) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2834) (#("  " 0 1 (face indent-bars-2 fontified t) 1 2 (fontified t)) . -2824) (#("    " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t) 2 3 (face indent-bars-2 fontified t) 3 4 (fontified t)) . -2780) (#("    " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t) 2 3 (face indent-bars-2 fontified t) 3 4 (fontified t)) . -2748) (#("  " 0 2 (fontified t)) . 2615) (undo-tree-id141 . -2) (undo-tree-id142 . -2) (undo-tree-id143 . -2) (undo-tree-id144 . -2) (undo-tree-id145 . -2) (undo-tree-id146 . -2) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -2549) (#("  " 0 1 (face indent-bars-1 fontified t) 1 2 (fontified t)) . -2509) (t 26667 24189 685094 170000)) nil (26667 24203 201206 269000) 0 nil])
+([nil nil ((#("    packages = with pkgs; [ ];
+" 0 2 (fontified t) 2 3 (face indent-bars-1 fontified t) 3 4 (fontified t) 4 12 (face nix-attribute-face fontified t) 12 15 (fontified t) 15 19 (face nix-keyword-face fontified t) 19 26 (fontified t) 26 27 (face (rainbow-delimiters-depth-3-face) fontified t) 27 28 (fontified t) 28 29 (face (rainbow-delimiters-depth-3-face) fontified t) 29 31 (fontified t)) . 2237) (undo-tree-id147 . -30) (t 26667 24203 204120 597000)) nil (26667 24224 487975 743000) 0 nil])
+([nil current ((#(" config
+," 0 9 (fontified t)) . 206) (undo-tree-id148 . -8) (undo-tree-id149 . -8) (undo-tree-id150 . -8) (undo-tree-id151 . -8) 214 (t 26667 24224 492162 226000)) nil (26667 24239 381731 768000) 0 nil])
+nil
