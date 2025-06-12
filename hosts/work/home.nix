@@ -26,6 +26,8 @@
     bottom
     # Keepass
     keepassxc
+    # Brave
+    brave
     
     vmware-workstation
 
@@ -48,8 +50,8 @@
 
   programs.emacs = {
     enable = true;
-    # package = pkgs.emacs-pgtk;
-    package = pkgs.emacs-nox;
+    package = pkgs.emacs-pgtk;
+    # package = pkgs.emacs-nox;
     extraPackages = epkgs: [
       epkgs.treesit-grammars.with-all-grammars
 
