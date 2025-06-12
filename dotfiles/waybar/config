@@ -10,7 +10,6 @@
     "modules-left": [
 	"custom/os_button",
         "hyprland/workspaces",
-        "hyprland/window",
     ],
     "modules-center": [],
     "modules-right": [
