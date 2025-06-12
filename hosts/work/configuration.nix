@@ -20,7 +20,7 @@
     # ../../modules/docker/postgres/csb14/docker-compose.nix
     # ../../modules/docker/postgres/csb124/docker-compose.nix
     ../../modules/docker/orcldb/docker-compose.nix
-    ../../modules/docker/mssql/docker-compose.nix
+    # ../../modules/docker/mssql/docker-compose.nix
   ];
 
   # Bootloader.
@@ -115,16 +115,15 @@
     variant = "";
   };
 
-  services.samba = {
+  services.syncthing = {
     enable = true;
-    openFirewall = true;
-    settings = {
-      global.security = "user";
-      public = {
-        path = "/public/";
-	"read only" = false;
-	browsable = "yes";
-	"guest ok" = "yes";
+    openDefaultPorts = true;
+    # Optional: GUI credentials (can be set in the browser instead if you don't want plaintext credentials in your configuration.nix file)
+    # or the password hash can be generated with "syncthing generate --config <path> --gui-password=<password>"
+    guiAddress = "swt-kleeberger-lx:8384";
+    settings.folders = {
+      "Emacs" = {
+        path = "/home/jakob/org/";
       };
     };
   };
@@ -219,7 +218,6 @@
     # Applications
     jetbrains.idea-ultimate
     ghostty
-    emacs
 
 
     # Java
@@ -272,7 +270,7 @@
 
   environment.sessionVariables = rec {
     # SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
-    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-26.1.3.Final/standalone/deployments";
+    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
 
     SEDNA_VERSION = "/home/jakob/dev/swt.products.sedna";
     WILDFLY_VERSION = "32.0.1";
@@ -330,8 +328,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5900 8080 ];
-  networking.firewall.allowedUDPPorts = [ 5900 ];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+  # networking.firewall.allowedUDPPorts = [ 5900 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -341,5 +339,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
