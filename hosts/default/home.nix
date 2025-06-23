@@ -24,7 +24,6 @@
 
     inputs.nvim.packages.x86_64-linux.default
 
-    # Emacs
     tree
     pkgs.texlive.combined.scheme-full
   ];
@@ -34,6 +33,7 @@
     ".config/waybar".source = ../../dotfiles/waybar;
     # ".config/emacs".source = ../../dotfiles/emacs;
     "Pictures/wallpapers".source = ../../modules/nixos/util/stylix/wallpapers;
+    "~/".source = ../../dotfiles/idea;
   };
 
   home.sessionVariables = {
