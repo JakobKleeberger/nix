@@ -156,6 +156,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.android_sdk.accept_license = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -200,6 +201,7 @@
 
     # Apps
     ghostty
+    android-studio
     ausweisapp
     signal-desktop
     telegram-desktop
