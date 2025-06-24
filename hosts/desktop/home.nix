@@ -29,8 +29,6 @@
     powertop
     # Drawio
     drawio
-    # Libreoffice
-    libreoffice
     jetbrains.idea-ultimate
 
     inputs.nvim.packages.x86_64-linux.default
