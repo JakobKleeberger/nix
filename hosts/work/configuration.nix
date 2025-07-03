@@ -5,7 +5,8 @@
 , pkgs
 , inputs
 , ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -32,8 +33,6 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "swt-kleeberger-lx"; # Define your hostname.
-  # networking.proxy.default = "wwwproxy.ser.net";
-  # networking.proxy.noProxy = "localhost, *ser.de";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -98,9 +97,27 @@
       };
     };
   };
+  
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since=5d --keep 5";
+    flake = "~/.nix/";
+  };
 
-  virtualisation.vmware.host.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableKvm = true;
+    addNetworkInterface = false;
+    enableExtensionPack = true;
+  };
+  users.extraGroups.vboxusers.members = [ "jakob" ];
 
+  # virtualisation.virtualbox.guest = {
+  #   enable = true;
+  #   dragAndDrop = true;
+  # };
+  
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -115,26 +132,12 @@
     variant = "";
   };
 
-  services.syncthing = {
+  services.sunshine = {
     enable = true;
-    openDefaultPorts = true;
-    # Optional: GUI credentials (can be set in the browser instead if you don't want plaintext credentials in your configuration.nix file)
-    # or the password hash can be generated with "syncthing generate --config <path> --gui-password=<password>"
-    guiAddress = "swt-kleeberger-lx:8384";
-    settings.folders = {
-      "Emacs" = {
-        path = "/home/jakob/org/";
-      };
-    };
-  };
-
-  services.samba-wsdd = {
-    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
     openFirewall = true;
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -155,7 +158,7 @@
   users.users.jakob = {
     isNormalUser = true;
     description = "jakob";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "djw" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -233,6 +236,7 @@
 
     dua
     fd
+    open-vm-tools
 
     age
     fastfetch
@@ -327,8 +331,17 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.printing.enable = true;
+
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 8080 ];
+    # allowedTCPPorts = [ 8080 47984 47989 47990 48010 ];
+    # allowedUDPPortRanges = [
+    #   { from = 47998; to = 48000; }
+    #   { from = 8000; to = 8010; }
+    # ];
+  };
   # networking.firewall.allowedUDPPorts = [ 5900 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
