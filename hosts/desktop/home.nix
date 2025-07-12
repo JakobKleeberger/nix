@@ -34,6 +34,7 @@
     # Drawio
     drawio
     jetbrains.idea-ultimate
+    prismlauncher
 
     inputs.nvim.packages.x86_64-linux.default
 
