@@ -1,7 +1,9 @@
-{ pkgs
-, inputs
-, ...
-}: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../../modules/nixos/util/stylix/stylix-home.nix
     ../../modules/home-manager/terminal
@@ -19,8 +21,9 @@
   home.packages = with pkgs; [
     teams-for-linux
     spotify
-    libreoffice
+    onlyoffice-bin
     jetbrains.idea-ultimate
+    thunderbird
 
     inputs.nvim.packages.x86_64-linux.default
 

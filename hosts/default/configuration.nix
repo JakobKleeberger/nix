@@ -1,10 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, nixpkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    ../../modules/nixos/system/login-manager.nix
+    ../../modules/nixos/system/polkit.nix
 
     inputs.home-manager.nixosModules.default
 
@@ -12,11 +20,19 @@
     ../../modules/nixos/util/keyd
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "libxml2-2.13.8"
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "jakob-nix-laptop"; # Define your hostname.
+
+  services.logind.settings.Login.HandleLidSwitch = "hibernate";
+  services.logind.settings.Login.HandleLidSwitchExternalPower = "suspend";
+  services.logind.settings.Login.HandleLidSwitchDocked = "ignore";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -48,52 +64,6 @@
     ];
   };
 
-  security.polkit.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-        if (
-          subject.isInGroup("users")
-            && (
-              action.id == "org.freedesktop.login1.reboot" ||
-              action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-              action.id == "org.freedesktop.login1.power-off" ||
-              action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-            )
-          )
-        {
-          return polkit.Result.YES;
-        }
-      });
-  '';
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd hyprland";
-        user = "jakob";
-      };
-      default_session = initial_session;
-    };
-  };
-
   services.xserver.synaptics.enable = true;
   services.fwupd.enable = true;
   # Configure keymap in X11
@@ -123,12 +93,22 @@
     pulse.enable = true;
   };
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableKvm = true;
+    addNetworkInterface = false;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jakob = {
     isNormalUser = true;
     description = "jakob";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
+  users.extraGroups.vboxusers.members = [ "jakob" ];
 
   programs.hyprland.enable = true;
 
@@ -146,11 +126,11 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  home-manager.backupFileExtension = "backup";
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { "jakob" = import ./home.nix; };
+    users = {
+      "jakob" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
@@ -168,7 +148,7 @@
     hyprshot
     wofi
     # Python3
-    python312Full
+    # python312Full
     poetry
     # Audio
     pavucontrol
@@ -179,6 +159,7 @@
     # Versioning
     git
     gitui
+    spotify
 
     # Tools
     unzip
@@ -201,17 +182,18 @@
 
     # Apps
     ghostty
-    android-studio
     ausweisapp
     signal-desktop
     telegram-desktop
     tor-browser-bundle-bin
     discord
-    ciscoPacketTracer8
   ];
 
   # Activate Nix Flakes and nix-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -219,7 +201,10 @@
   services.tailscale.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 5555 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    5555
+  ];
   networking.firewall.allowedUDPPorts = [ 41641 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
