@@ -1,3 +1,4 @@
 servers/actual-budget/actual-data/
 servers/viewtube/data/
-
+*.~undo-tree~
+*.nix~
