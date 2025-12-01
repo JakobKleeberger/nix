@@ -1,8 +1,10 @@
-{ inputs
-, lib
-, pkgs
-, ...
-}: {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
   ];
@@ -55,7 +57,11 @@
             installCargo = true;
             installRustc = true;
           };
+          jdtls.enable = true;
+          kotlin_language_server = true;
         };
+
+        java.enable = true;
       };
 
       cmp = {
@@ -75,8 +81,14 @@
         settings = {
           formatters_by_ft = {
             lua = [ "stylua" ];
-            nix = [ "alejandra" "nixpkgs_fmt" ];
-            python = [ "black" "isort" ];
+            nix = [
+              "alejandra"
+              "nixpkgs_fmt"
+            ];
+            python = [
+              "black"
+              "isort"
+            ];
             c = [ "clang-format" ];
             rust = [ "rustfmt" ];
           };

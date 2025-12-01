@@ -1,8 +1,9 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     # ./nvim
     ./fish
-    ./lf
+    # ./lf
     ./yazi
     ./direnv
     ./utils
