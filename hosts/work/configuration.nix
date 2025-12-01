@@ -1,10 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }:
 {
   imports = [
@@ -18,10 +18,6 @@
     ../../modules/nixos/util/keyd
     # ../../modules/home-manager/work
 
-    # ../../modules/docker/postgres/csb14/docker-compose.nix
-    # ../../modules/docker/postgres/csb124/docker-compose.nix
-    ../../modules/docker/orcldb/docker-compose.nix
-    # ../../modules/docker/mssql/docker-compose.nix
   ];
 
   # Bootloader.
@@ -97,7 +93,9 @@
       };
     };
   };
-  
+
+  # programs.light.enable = true;
+
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -113,17 +111,22 @@
   };
   users.extraGroups.vboxusers.members = [ "jakob" ];
 
+  virtualisation.docker.enable = true;
+
   # virtualisation.virtualbox.guest = {
   #   enable = true;
   #   dragAndDrop = true;
   # };
-  
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "hyprland";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "jakob";
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -137,6 +140,12 @@
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
+  };
+
+  services.elasticsearch = {
+    enable = true;
+    listenAddress = "swt-kleeberger-lx";
+    plugins = [ pkgs.elasticsearchPlugins.analysis-icu ];
   };
 
   # Enable bluetooth
@@ -158,9 +167,11 @@
   users.users.jakob = {
     isNormalUser = true;
     description = "jakob";
-    extraGroups = [ "networkmanager" "wheel" "docker" "djw" ];
-    packages = with pkgs; [
-      kdePackages.kate
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "djw"
     ];
   };
 
@@ -172,18 +183,10 @@
   programs.java = {
     enable = true;
     package = pkgs.jdk17;
-    # package = pkgs.jdk17;
-    # packages = with pkgs; [
-    #   openjdk17
-    #   openjdk11
-    # ];
-    # version = 17;
   };
 
   # Documentation
   documentation.dev.enable = true;
-
-  home-manager.backupFileExtension = "backup";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -207,11 +210,6 @@
     hypridle
     swaynotificationcenter
     wofi
-    wayvnc
-    # Bluetooth Manager
-    # Python3
-    python312Full
-    poetry
     # Audio
     pavucontrol
     #  Man Pages
@@ -221,12 +219,11 @@
     # Applications
     jetbrains.idea-ultimate
     ghostty
-
+    kdePackages.partitionmanager
+    kdePackages.dolphin
 
     # Java
     maven
-    kdePackages.partitionmanager
-    unzip
 
     # Versionierung
     git
@@ -236,11 +233,12 @@
 
     dua
     fd
-    open-vm-tools
+    unzip
 
     age
     fastfetch
     wget
+    opentelemetry-collector-contrib
     polkit_gnome
 
     # Create an FHS environment using the command `fhs`, enabling the execution of non-NixOS packages in NixOS!
@@ -248,33 +246,34 @@
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
       in
-      pkgs.buildFHSEnv (base
+      pkgs.buildFHSEnv (
+        base
         // {
-        name = "fhs";
-        targetPkgs = pkgs:
-          # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
-          # lacking many basic packages needed by most software.
-          # Therefore, we need to add them manually.
-          #
-          # pkgs.appimageTools provides basic packages required by most software.
-          (base.targetPkgs pkgs)
-            ++ (
-            with pkgs; [
+          name = "fhs";
+          targetPkgs =
+            pkgs:
+            # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
+            # lacking many basic packages needed by most software.
+            # Therefore, we need to add them manually.
+            #
+            # pkgs.appimageTools provides basic packages required by most software.
+            (base.targetPkgs pkgs)
+            ++ (with pkgs; [
               pkg-config
               ncurses
               # Feel free to add more packages here if needed.
-            ]
-          );
-        profile = "export FHS=1";
-        runScript = "bash";
-        extraOutputsToInstall = [ "dev" ];
-      })
+            ]);
+          profile = "export FHS=1";
+          runScript = "bash";
+          extraOutputsToInstall = [ "dev" ];
+        }
+      )
     )
   ];
 
   environment.sessionVariables = rec {
     # SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
-    SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
+    # SEDNA_DEPLOYMENT_DIRECTORY = "$HOME/dev/runtime/wildfly/wildfly-32.0.1/standalone/deployments";
 
     SEDNA_VERSION = "/home/jakob/dev/swt.products.sedna";
     WILDFLY_VERSION = "32.0.1";
@@ -297,6 +296,9 @@
     RC_AGENT_SERVICE_PORT = 8070;
 
     RC_CSB_SINCE_4_2 = "TRUE";
+    # DX4_LOGDEV = "FILE-JSON";
+
+    ES_HOME = "${pkgs.elasticsearch}";
 
     # Not officially in the specification
     # XDG_BIN_HOME    = "$HOME/.local/bin";
@@ -316,7 +318,10 @@
   };
 
   # Activate Nix Flakes and nix-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -336,12 +341,18 @@
   # Open ports in the firewall.
   networking.firewall = {
     allowedTCPPorts = [ 8080 ];
+    allowedUDPPorts = [ 162 ];
     # allowedTCPPorts = [ 8080 47984 47989 47990 48010 ];
     # allowedUDPPortRanges = [
     #   { from = 47998; to = 48000; }
     #   { from = 8000; to = 8010; }
     # ];
   };
+
+  networking.nameservers = [
+    "1.1.1.1"
+    "9.9.9.9"
+  ];
   # networking.firewall.allowedUDPPorts = [ 5900 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

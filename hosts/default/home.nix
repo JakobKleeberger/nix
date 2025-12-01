@@ -21,7 +21,7 @@
   home.packages = with pkgs; [
     teams-for-linux
     spotify
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     jetbrains.idea-ultimate
     thunderbird
 

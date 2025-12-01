@@ -1,8 +1,10 @@
-{ config
-, pkgs
-, inputs
-, ...
-}: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     # ../../modules/home-manager/terminal
     ../../modules/nixos/util/stylix/stylix-home.nix
@@ -28,8 +30,8 @@
     keepassxc
     # Brave
     brave
-    
-    vmware-workstation
+    # OnlyOffice
+    onlyoffice-desktopeditors
 
     inputs.nvim.packages.x86_64-linux.default
 
@@ -78,7 +80,6 @@
       pkgs.jdt-language-server
     ];
   };
-
 
   programs.bash.enable = true;
 
