@@ -24,6 +24,8 @@
     onlyoffice-desktopeditors
     jetbrains.idea-ultimate
     thunderbird
+    brave
+    kdePackages.dolphin
 
     inputs.nvim.packages.x86_64-linux.default
 
