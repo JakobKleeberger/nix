@@ -17,7 +17,7 @@
     # ../../modules/nixos/hosting/adguard.nix
 
     ../../servers/glance/docker-compose.nix
-    ../../servers/actual-budget/docker-compose.nix
+    # ../../servers/actual-budget/docker-compose.nix
     ../../servers/paperless/docker-compose.nix
     # ../../servers/viewtube/docker-compose.nix
   ];

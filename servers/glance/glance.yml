@@ -55,7 +55,7 @@ pages:
                 icon: si:adguard
               - title: Paperless
                 url: http://homelab:8010
-                icon: si:paperless-ngx
+                icon: si:paperlessngx
           - type: hacker-news
 
           # - type: reddit
