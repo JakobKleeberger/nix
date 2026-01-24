@@ -16,8 +16,8 @@
 
     inputs.home-manager.nixosModules.default
 
-    ../../modules/nixos/util/stylix/stylix-nixos.nix
-    ../../modules/nixos/util/keyd
+    ../../modules/nixos/utils/stylix/stylix-nixos.nix
+    ../../modules/nixos/utils/keyd
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -36,6 +36,31 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
+  # Enable power management
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
+  # Enable Thunderbolt
+  services.hardware.bolt.enable = true;
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -72,33 +97,6 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-
-  # Enable Thunderbolt
-  services.hardware.bolt.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableKvm = true;
-    addNetworkInterface = false;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jakob = {
     isNormalUser = true;
@@ -108,16 +106,23 @@
       "wheel"
     ];
   };
-  users.extraGroups.vboxusers.members = [ "jakob" ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-  ];
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "jakob" = import ./home.nix;
+    };
+  };
 
   programs.hyprland.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ ];
+
+  programs.kdeconnect.enable = true;
 
   # Documentation
   documentation.dev.enable = true;
@@ -128,13 +133,6 @@
 
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "jakob" = import ./home.nix;
-    };
   };
 
   # Allow unfree packages
@@ -189,8 +187,11 @@
     ausweisapp
     signal-desktop
     telegram-desktop
-    tor-browser-bundle-bin
+    tor-browser
     discord
+    # sabnzbd
+    vlc
+    mpv
   ];
 
   # Activate Nix Flakes and nix-command
@@ -203,6 +204,10 @@
   services.openssh.enable = true;
 
   services.tailscale.enable = true;
+
+  # services.sabnzbd = {
+  #   enable = true;
+  # };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [

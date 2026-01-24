@@ -210,7 +210,7 @@
     ausweisapp
     signal-desktop
     telegram-desktop
-    tor-browser-bundle-bin
+    tor-browser
     discord
     vesktop
     ghostty
