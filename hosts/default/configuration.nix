@@ -144,16 +144,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Hyprland dependencies
-    waybar
-    hyprlock
-    hyprpaper
     hyprshot
-    wofi
-    # Python3
-    # python312Full
     poetry
     # Audio
-    pavucontrol
+    # pavucontrol
     #  Man Pages
     man-pages
     man-pages-posix

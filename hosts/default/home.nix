@@ -13,7 +13,7 @@
   home.username = "jakob";
   home.homeDirectory = "/home/jakob";
 
-  home.stateVersion = "unstable"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   fonts.fontconfig.enable = true;
 
