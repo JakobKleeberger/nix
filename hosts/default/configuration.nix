@@ -52,6 +52,8 @@
   # Enable Thunderbolt
   services.hardware.bolt.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -183,7 +185,6 @@
     telegram-desktop
     tor-browser
     discord
-    # sabnzbd
     vlc
     mpv
   ];

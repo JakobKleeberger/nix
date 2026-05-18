@@ -23,10 +23,11 @@
     teams-for-linux
     spotify
     onlyoffice-desktopeditors
-    jetbrains.idea-ultimate
+    jetbrains.idea
     thunderbird
     brave
     kdePackages.dolphin
+    prismlauncher
 
     inputs.nvim.packages.x86_64-linux.default
 

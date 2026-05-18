@@ -22,7 +22,7 @@
       pkgs.nil
       pkgs.nixd
       pkgs.nixdoc
-      pkgs.nixfmt-classic
+      pkgs.nixfmt
       # Latex
       pkgs.gnuplot
       # Java
