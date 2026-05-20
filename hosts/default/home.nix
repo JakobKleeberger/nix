@@ -28,6 +28,7 @@
     brave
     kdePackages.dolphin
     prismlauncher
+    keepassxc
 
     inputs.nvim.packages.x86_64-linux.default
 
