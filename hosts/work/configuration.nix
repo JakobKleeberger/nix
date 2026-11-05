@@ -14,8 +14,8 @@
     inputs.home-manager.nixosModules.default
 
     # ../../modules/home-manager/terminal
-    ../../modules/nixos/util/stylix/stylix-nixos.nix
-    ../../modules/nixos/util/keyd
+    ../../modules/nixos/utils/stylix/stylix-nixos.nix
+    ../../modules/nixos/utils/keyd
     # ../../modules/home-manager/work
 
   ];

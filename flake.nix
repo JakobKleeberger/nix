@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     # nixvim.url = "github:nix-community/nixvim";
     nvim.url = "github:jakobkleeberger/nixvim";
     stylix.url = "github:danth/stylix";

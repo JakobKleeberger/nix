@@ -5,10 +5,16 @@
 }:
 {
   imports = [
+<<<<<<< Updated upstream
     ../../modules/nixos/utils/stylix/stylix-home.nix
     # Fish, Yazi, Zoxide, Direnv
     ../../modules/home-manager/terminal
     # Emacs, Desktop, Environment
+=======
+    # ../../modules/home-manager/terminal
+    ../../modules/nixos/utils/stylix/stylix-home.nix
+    ../../modules/home-manager/terminal
+>>>>>>> Stashed changes
     ../../modules/home-manager/utils
   ];
 
@@ -23,17 +29,11 @@
 
   home.packages = with pkgs; [
     ripgrep
-    # Microsoft Teams
-    teams-for-linux
-    # Dia
-    dia
     # Spotify
     spotify
     # Power Manager
     powertop
-    # Drawio
-    drawio
-    jetbrains.idea-ultimate
+    # jetbrains.idea
     prismlauncher
 
     inputs.nvim.packages.x86_64-linux.default
@@ -46,7 +46,7 @@
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/waybar".source = ../../dotfiles/waybar;
-    "Pictures/wallpapers".source = ../../modules/nixos/util/stylix/wallpapers;
+    "Pictures/wallpapers".source = ../../modules/nixos/utils/stylix/wallpapers;
   };
 
   home.sessionVariables = {
@@ -55,40 +55,48 @@
 
   programs.git = {
     enable = true;
-    userName = "JakobKleeberger";
-    userEmail = "kleeberger.jakob@aol.com";
+    settings.user.name = "JakobKleeberger";
+    settings.user.email = "kleeberger.jakob@aol.com";
     lfs.enable = true;
   };
 
+<<<<<<< Updated upstream
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
     extraPackages = epkgs: [
       epkgs.treesit-grammars.with-all-grammars
+=======
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacs-pgtk;
+  #   extraPackages = epkgs: [
+  #     epkgs.treesit-grammars.with-all-grammars
 
-      pkgs.jetbrains-mono
-      pkgs.nerd-fonts.jetbrains-mono
-      pkgs.nerd-fonts.symbols-only
+  #     pkgs.jetbrains-mono
+  #     pkgs.nerd-fonts.jetbrains-mono
+  #     pkgs.nerd-fonts.symbols-only
+>>>>>>> Stashed changes
 
-      # Rust
-      pkgs.rust-analyzer
-      pkgs.rustfmt
-      pkgs.cargo
-      pkgs.gcc_multi
-      # Python
-      pkgs.pyright
-      pkgs.ruff
-      # Nix
-      pkgs.nil
-      pkgs.nixd
-      pkgs.nixdoc
-      pkgs.nixfmt-classic
-      # Latex
-      pkgs.gnuplot
-      # Java
-      pkgs.jdt-language-server
-    ];
-  };
+  #     # Rust
+  #     pkgs.rust-analyzer
+  #     pkgs.rustfmt
+  #     pkgs.cargo
+  #     pkgs.gcc_multi
+  #     # Python
+  #     pkgs.pyright
+  #     pkgs.ruff
+  #     # Nix
+  #     pkgs.nil
+  #     pkgs.nixd
+  #     pkgs.nixdoc
+  #     pkgs.nixfmt
+  #     # Latex
+  #     pkgs.gnuplot
+  #     # Java
+  #     pkgs.jdt-language-server
+  #   ];
+  # };
 
   programs.bash.enable = true;
 

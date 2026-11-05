@@ -1,21 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, nixpkgs
-, inputs
-, ...
-}: {
+{
+  config,
+  pkgs,
+  nixpkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ../../modules/nixos/system/login-manager.nix
+    ../../modules/nixos/system/polkit.nix
+
     inputs.home-manager.nixosModules.default
 
-    # ../../modules/home-manager/terminal
-    ../../modules/nixos/util/stylix/stylix-nixos.nix
-    ../../modules/nixos/util/keyd
+    ../../modules/nixos/utils/stylix/stylix-nixos.nix
+    ../../modules/nixos/utils/keyd
   ];
 
   # Bootloader.
@@ -107,6 +111,10 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   services.blueman.enable = true;
 
   # Enable sound with pipewire.
@@ -123,7 +131,10 @@
   users.users.jakob = {
     isNormalUser = true;
     description = "jakob";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -150,9 +161,9 @@
     skia
     skia-aseprite
     fontconfig
-    xorg.libX11
-    xorg.libICE
-    xorg.libSM
+    libx11
+    libice
+    libsm
   ];
 
   home-manager.backupFileExtension = "backup";
@@ -170,16 +181,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     # Hyprland dependencies
-    waybar
-    hyprlock
-    hyprpaper
-    wofi
-    # Bluetooth Manager
-    # Python3
-    python312Full
-    poetry
+    hyprshot
     # Audio
     pavucontrol
     #  Man Pages
@@ -211,14 +215,16 @@
     signal-desktop
     telegram-desktop
     tor-browser
-    discord
     vesktop
     ghostty
     gparted
   ];
 
   # Activate Nix Flakes and nix-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -236,7 +242,10 @@
   services.tailscale.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 5555 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    5555
+  ];
   networking.firewall.allowedUDPPorts = [ 41641 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -247,5 +256,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 }

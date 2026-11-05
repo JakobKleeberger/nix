@@ -7,7 +7,7 @@
 {
   imports = [
     # ../../modules/home-manager/terminal
-    ../../modules/nixos/util/stylix/stylix-home.nix
+    ../../modules/nixos/utils/stylix/stylix-home.nix
     ../../modules/home-manager/terminal
     ../../modules/home-manager/utils
   ];
@@ -43,7 +43,7 @@
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/waybar".source = ../../dotfiles/waybar;
-    # "Pictures/wallpapers".source = ../../modules/nixos/util/stylix/wallpapers;
+    # "Pictures/wallpapers".source = ../../modules/nixos/utils/stylix/wallpapers;
     "~/".source = ../../dotfiles/idea;
   };
 

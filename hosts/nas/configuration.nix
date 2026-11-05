@@ -10,9 +10,9 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
 
-    ../../modules/nixos/util/bottom.nix
+    ../../modules/nixos/utils/bottom.nix
 
-    ../../modules/nixos/util/keyd
+    ../../modules/nixos/utils/keyd
   ];
 
   # Bootloader.
