@@ -27,6 +27,9 @@
       pkgs.gnuplot
       # Java
       pkgs.jdt-language-server
+
+      pkgs.tree
+      pkgs.texliveFull
     ];
   };
 }

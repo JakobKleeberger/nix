@@ -24,10 +24,23 @@
       nixpkgs,
       ...
     }@inputs:
+    let
+      # Gemeinsame Nixpkgs-Konfiguration für alle Hosts
+      sharedNixpkgsConfig = {
+        nixpkgs.config = {
+          allowUnfree = true;
+          allowBroken = true;
+          problems.handlers = {
+            "gtk+".broken = "ignore"; # oder "warn"
+          };
+        };
+      };
+    in
     {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          sharedNixpkgsConfig
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
@@ -37,6 +50,7 @@
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          sharedNixpkgsConfig
           ./hosts/desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
@@ -46,6 +60,7 @@
       nixosConfigurations.work = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          sharedNixpkgsConfig
           ./hosts/work/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
@@ -55,6 +70,7 @@
       nixosConfigurations.homelab = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          sharedNixpkgsConfig
           ./hosts/homelab/configuration.nix
           inputs.home-manager.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
@@ -63,6 +79,7 @@
       nixosConfigurations.nas = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          sharedNixpkgsConfig
           ./hosts/nas/configuration.nix
           inputs.home-manager.nixosModules.default
           # inputs.sops-nix.nixosModules.sops

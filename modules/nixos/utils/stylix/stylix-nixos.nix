@@ -17,6 +17,8 @@
 
   # stylix.targets.nixvim.enable = false;
 
+  stylix.targets.kmscon.enable = false;
+
   stylix.fonts = {
     serif = {
       package = pkgs.nerd-fonts.noto;

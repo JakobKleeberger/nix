@@ -140,7 +140,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.android_sdk.accept_license = true;
+  # nixpkgs.config = {
+  #   problems.handlers = {
+  #     "gtk+".broken = "ignore";
+  #   };
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -219,5 +223,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "27.05"; # Did you read the comment?
 }

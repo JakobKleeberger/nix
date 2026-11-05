@@ -1,17 +1,21 @@
-{ pkgs
-, inputs
-, ...
-}: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
-    # ../../modules/home-manager/terminal
-    ../../modules/nixos/util/stylix/stylix-home.nix
+    ../../modules/nixos/utils/stylix/stylix-home.nix
+    # Fish, Yazi, Zoxide, Direnv
     ../../modules/home-manager/terminal
+    # Emacs, Desktop, Environment
+    ../../modules/home-manager/utils
   ];
 
   home.username = "jakob";
   home.homeDirectory = "/home/jakob";
 
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   fonts.fontconfig.enable = true;
 
@@ -54,7 +58,6 @@
     userEmail = "kleeberger.jakob@aol.com";
     lfs.enable = true;
   };
-
 
   programs.emacs = {
     enable = true;

@@ -20,9 +20,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    teams-for-linux
     spotify
-    onlyoffice-desktopeditors
+    # onlyoffice-desktopeditors
     jetbrains.idea
     thunderbird
     brave
@@ -31,9 +30,6 @@
     keepassxc
 
     inputs.nvim.packages.x86_64-linux.default
-
-    tree
-    pkgs.texlive.combined.scheme-full
   ];
 
   home.file = {
