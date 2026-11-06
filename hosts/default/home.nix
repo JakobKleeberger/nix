@@ -18,10 +18,11 @@
   fonts.fontconfig.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.problems.handlers."gtk+".broken = "warn";
 
   home.packages = with pkgs; [
     spotify
-    # onlyoffice-desktopeditors
+    onlyoffice-desktopeditors
     jetbrains.idea
     thunderbird
     brave
